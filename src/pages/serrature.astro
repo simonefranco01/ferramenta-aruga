@@ -1,0 +1,47 @@
+---
+import ServicePage from '../layouts/ServicePage.astro';
+import { site } from '../lib/site';
+---
+<ServicePage
+  title="Cambio serratura e cilindro europeo a Torino Santa Rita | Ferramenta Aruga"
+  description="Sostituzione di cilindri e serrature a Torino Santa Rita: da doppia mappa a cilindro europeo, porte blindate, defender, copie di chiavi e radiocomandi. Preventivo gratuito, nessun costo di uscita."
+  service="serrature"
+  tag="Serrature e cilindri"
+  h1="Una porta più sicura, senza complicazioni."
+  lead="Sostituiamo cilindri e serrature a Santa Rita, dalla vecchia doppia mappa al cilindro europeo fino alle porte blindate. Nessun costo di uscita."
+  photoLabel="serratura montata su una porta"
+  situations={[
+    { q: 'Ho ancora la chiave lunga a doppia mappa', a: 'La aggiorniamo a cilindro europeo' },
+    { q: 'Ho perso le chiavi o ho appena traslocato', a: 'Cambiamo il cilindro' },
+    { q: 'Voglio proteggere meglio la porta', a: 'Cilindri e serrature di sicurezza, defender magnetico' },
+    { q: 'Ho una porta blindata', a: 'Sostituzione serratura per porte blindate' },
+    { q: 'Mi serve una copia', a: 'Duplicazione chiavi e radiocomandi' },
+  ]}
+  whatWeDo={[
+    'Sostituzione serrature a doppia mappa',
+    'Aggiornamento da doppia mappa a cilindro europeo',
+    'Sostituzione cilindro a pompa con cilindro europeo',
+    'Sostituzione e installazione cilindri europei',
+    'Cilindri e serrature di sicurezza',
+    'Serrature per porte blindate',
+    'Installazione defender magnetici',
+    'Duplicazione chiavi e radiocomandi',
+  ]}
+  why={[
+    { kind: 'years', value: 2026 - site.foundingYear, label: 'anni nel quartiere' },
+    { kind: 'title', text: 'Nessun costo di uscita' },
+    { kind: 'title', text: 'Aperti anche il sabato' },
+    { kind: 'text', text: 'Per i lavori semplici, come il cambio del cilindro, spesso interveniamo in tempi brevi.' },
+  ]}
+  review={{
+    quote: "Da sempre un punto di riferimento in Santa Rita per il fai da te o per una spesa importante come il cambio serratura o tinteggiare l'abitazione.",
+    author: 'Concetta D.',
+  }}
+  faqs={[
+    { q: 'Quanto costa cambiare la serratura?', a: "Dipende dalla porta e dal tipo di serratura. Il preventivo è gratuito e non c'è costo di uscita: mandaci una foto e ti diciamo." },
+    { q: "Che differenza c'è tra doppia mappa e cilindro europeo?", a: 'Il cilindro europeo si può sostituire senza cambiare tutta la serratura e ha diversi livelli di sicurezza. Guardiamo noi se la tua porta si può aggiornare.' },
+    { q: 'Venite a casa?', a: 'Sì, in zona Santa Rita, senza costo di uscita.' },
+    { q: 'Aprite porte chiuse?', a: "No, per l'apertura di una porta serve un fabbro." },
+    { q: 'Fate le copie di chiavi e radiocomandi?', a: 'Sì, in negozio.' },
+  ]}
+/>

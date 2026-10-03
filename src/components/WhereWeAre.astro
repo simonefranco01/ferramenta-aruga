@@ -1,0 +1,50 @@
+---
+// "Dove siamo e orari". Niente iframe di Google Maps (imposta cookie): riquadro con pulsante.
+import Icon from './Icon.astro';
+import { site, telHref, phoneDisplay, email } from '../lib/site';
+
+interface Props { headingLevel?: 'h1' | 'h2'; title?: string }
+const { headingLevel = 'h2', title = 'Dove siamo e orari' } = Astro.props;
+const Heading = headingLevel;
+---
+<section class="section bg-cream" aria-labelledby="dove-title">
+  <div class="container pad-y where">
+    <div class="where__col">
+      <Heading id="dove-title" class={headingLevel === 'h1' ? 'h1-service' : 'h2'}>{title}</Heading>
+      <slot />
+      <div class="info-card">
+        <div>
+          <div class="eyebrow">Indirizzo</div>
+          <div class="info-card__big">{site.address.street}, {site.address.city}</div>
+          <div>Quartiere {site.address.neighborhood}</div>
+        </div>
+        <div>
+          <div class="eyebrow">Orari</div>
+          <div style="font-weight:700">{site.hours.days}</div>
+          <div>{site.hours.morning} e {site.hours.afternoon}</div>
+          <div>{site.hours.closed}</div>
+        </div>
+        <div>
+          <div class="eyebrow">Telefono</div>
+          <a href={telHref} class="info-card__phone" data-track="chiama" data-track-where="dove-siamo">{phoneDisplay}</a>
+        </div>
+        {email && (
+          <div>
+            <div class="eyebrow">Email</div>
+            <a href={`mailto:${email}`} style="font-weight:700">{email}</a>
+          </div>
+        )}
+      </div>
+      <div class="btn-row">
+        <a href={site.mapsUrl} class="btn btn-yellow btn-shadow" style="min-height:52px" target="_blank" rel="noopener">Indicazioni</a>
+        <a href={telHref} class="btn btn-blue btn-shadow" style="min-height:52px" data-track="chiama" data-track-where="dove-siamo">Chiama</a>
+      </div>
+    </div>
+    <div class="map-box">
+      <span class="map-pin" aria-hidden="true"><Icon name="pin" size={30} /></span>
+      <span class="map-box__addr">{site.address.street}, {site.address.city}</span>
+      <a href={site.mapsUrl} class="btn btn-white btn-shadow" style="min-height:52px" target="_blank" rel="noopener">Apri in Google Maps</a>
+      <p class="map-box__note">La mappa si apre su Google Maps, in una nuova scheda.</p>
+    </div>
+  </div>
+</section>

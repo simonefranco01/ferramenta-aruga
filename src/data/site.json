@@ -1,0 +1,46 @@
+{
+  "staging": true,
+
+  "name": "Ferramenta Aruga",
+  "googleName": "Colorificio San Marco Ferramenta Aruga Torino",
+  "legalName": "Aruga SNC di Aruga Giorgio e Vittorio",
+  "tagline": "Ferramenta e colorificio a Santa Rita dal 1986",
+  "foundingYear": 1986,
+  "founderName": "",
+
+  "address": {
+    "street": "Via Barletta 55/B",
+    "city": "Torino",
+    "neighborhood": "Santa Rita",
+    "region": "TO",
+    "country": "IT"
+  },
+  "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Colorificio+San+Marco+Ferramenta+Aruga+Via+Barletta+55%2FB+Torino",
+
+  "phone": {
+    "display": "011 324 1363",
+    "tel": "+390113241363"
+  },
+  "whatsapp": "[DA INSERIRE: numero con prefisso internazionale, es. 393331234567]",
+  "email": "[DA INSERIRE]",
+  "formEndpoint": "[DA INSERIRE: https://formspree.io/f/xxxxxxx]",
+
+  "hours": {
+    "days": "Lunedì–sabato",
+    "daysShort": "Lun–sab",
+    "morning": "9:00–12:15",
+    "afternoon": "15:15–19:15",
+    "closed": "Domenica chiuso",
+    "spec": [
+      { "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "opens": "09:00", "closes": "12:15" },
+      { "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "opens": "15:15", "closes": "19:15" }
+    ]
+  },
+
+  "rating": { "value": 4.8, "count": 208 },
+
+  "social": {
+    "facebook": "",
+    "instagram": ""
+  }
+}

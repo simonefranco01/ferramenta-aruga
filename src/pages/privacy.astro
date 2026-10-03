@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, email, telHref, phoneDisplay } from '../lib/site';
+---
+<Base
+  title="Informativa privacy | Ferramenta Aruga"
+  description="Come trattiamo i dati che ci invii con il modulo di richiesta preventivo: titolare, finalità, servizio usato per l'invio e diritti dell'interessato."
+>
+  <section class="section bg-cream">
+    <div class="container-narrow pad-y">
+      <h1 class="h1-service" style="font-size:clamp(38px,5vw,64px);margin-bottom:28px">Informativa privacy</h1>
+      <div class="prose">
+        <p>Questa informativa spiega come trattiamo i dati personali che ci invii compilando il modulo di richiesta preventivo di questo sito.</p>
+
+        <h2>Titolare del trattamento</h2>
+        <p>{site.legalName}, {site.address.street}, {site.address.city}. Telefono: <a href={telHref}>{phoneDisplay}</a>{email && <>. Email: <a href={`mailto:${email}`}>{email}</a></>}.</p>
+
+        <h2>Quali dati raccogliamo</h2>
+        <p>Solo quelli che inserisci nel modulo: nome, numero di telefono, descrizione del problema, servizio scelto, modo in cui preferisci essere ricontattato e, se lo indichi, l'indirizzo email. Se ci scrivi su WhatsApp, vale anche l'informativa di quel servizio.</p>
+
+        <h2>Perché li usiamo</h2>
+        <p>Per rispondere alla tua richiesta e prepararti il preventivo. Il consenso che ci dai spuntando la casella è la base del trattamento. Non usiamo i dati per altri scopi e non li vendiamo.</p>
+
+        <h2>Come inviamo il modulo</h2>
+        <p>Il sito è statico. Il modulo viene inoltrato alla nostra casella email tramite un servizio esterno di gestione dei moduli (Formspree), che agisce come nostro fornitore e può trattare i dati anche fuori dallo Spazio Economico Europeo.</p>
+
+        <h2>Quanto conserviamo i dati</h2>
+        <p>Per il tempo necessario a rispondere e a gestire il preventivo; poi li cancelliamo, salvo obblighi di legge.</p>
+
+        <h2>Cookie</h2>
+        <p>Il sito non usa cookie di profilazione e non ha strumenti di analisi attivi. Per questo non mostriamo il banner dei cookie. I pulsanti che aprono Google Maps o WhatsApp portano a servizi esterni, con le loro informative.</p>
+
+        <h2>I tuoi diritti</h2>
+        <p>Puoi chiederci in ogni momento di accedere ai tuoi dati, correggerli, cancellarli, limitarne l'uso o opporti al trattamento, e puoi revocare il consenso. Scrivici o chiamaci ai recapiti qui sopra. Hai anche il diritto di presentare reclamo al Garante per la protezione dei dati personali (garanteprivacy.it).</p>
+      </div>
+    </div>
+  </section>
+</Base>

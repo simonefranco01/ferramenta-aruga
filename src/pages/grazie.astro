@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { telHref, phoneDisplay, waLink, waQuoteMessage } from '../lib/site';
+import { url } from '../lib/url';
+
+const wa = waLink(waQuoteMessage());
+---
+<Base
+  title="Richiesta inviata | Ferramenta Aruga"
+  description="Abbiamo ricevuto la tua richiesta. Ti rispondiamo di solito entro poche ore in orario di negozio."
+  noindex
+>
+  <section class="section bg-yellow">
+    <div class="container page-hero" style="max-width:880px;margin:0 auto">
+      <h1 class="h1-service" style="font-size:clamp(40px,6vw,76px)">Grazie, abbiamo ricevuto la tua richiesta.</h1>
+      <p class="lead">Ti rispondiamo di solito entro poche ore in orario di negozio, nel modo che hai scelto. Il preventivo è gratuito.</p>
+      <div class="btn-row" style="margin-top:28px">
+        {wa && (
+          <a href={wa} class="btn btn-blue btn-lg" target="_blank" rel="noopener" data-track="whatsapp" data-track-where="grazie">
+            <Icon name="whatsapp" size={22} />Invia la foto su WhatsApp
+          </a>
+        )}
+        <a href={telHref} class="btn btn-white btn-lg" data-track="chiama" data-track-where="grazie"><Icon name="phone" size={20} />Chiama lo {phoneDisplay}</a>
+        <a href={url('/')} class="btn btn-yellow btn-lg">Torna alla home</a>
+      </div>
+    </div>
+  </section>
+</Base>

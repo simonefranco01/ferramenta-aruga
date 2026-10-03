@@ -1,0 +1,13 @@
+---
+import Icon from './Icon.astro';
+import { telHref } from '../lib/site';
+
+interface Props { ctaHref: string }
+const { ctaHref } = Astro.props;
+---
+<div class="mobile-bar mob-only">
+  <a href={ctaHref} class="btn btn-blue mobile-bar__cta" data-track="preventivo" data-track-where="barra-mobile">Chiedi preventivo</a>
+  <a href={telHref} class="btn btn-white mobile-bar__icon" aria-label="Chiama" data-track="chiama" data-track-where="barra-mobile">
+    <Icon name="phone" size={24} />
+  </a>
+</div>

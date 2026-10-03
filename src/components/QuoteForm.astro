@@ -1,0 +1,247 @@
+---
+// Form preventivo. Invio a Formspree (endpoint in site.json).
+// - Endpoint non impostato: il form non si invia e al posto del pulsante c'è il link per chiamare.
+// - WhatsApp non impostato: niente pulsante foto e niente opzione di ricontatto WhatsApp.
+// - Email non impostata: niente opzione di ricontatto via email.
+import Icon from './Icon.astro';
+import { formOptions, serviceLabel } from '../data/services';
+import { formEndpoint, whatsappNumber, email, telHref, phoneDisplay, waLink, waQuoteMessage } from '../lib/site';
+import { url } from '../lib/url';
+
+interface Props {
+  service?: string;
+  title?: string;
+  id?: string;
+}
+const { service = 'altro', title = 'Chiedi il preventivo gratuito', id = 'preventivo' } = Astro.props;
+
+const selectedLabel = serviceLabel(service);
+const waHref = waLink(waQuoteMessage(service === 'altro' ? undefined : selectedLabel));
+const waMessages = Object.fromEntries(
+  formOptions.map((o) => [o.value, waQuoteMessage(o.value === 'altro' ? undefined : o.label)]),
+);
+
+const prefs = [
+  whatsappNumber && 'WhatsApp',
+  email && 'Email',
+  'Telefono',
+].filter(Boolean) as string[];
+---
+<section id={id} class="section bg-yellow" aria-labelledby={`${id}-title`}>
+  <div class="container-narrow pad-y">
+    <h2 id={`${id}-title`} class="h2" style="margin-bottom:24px;font-size:clamp(34px,4.4vw,60px);letter-spacing:-.035em">{title}</h2>
+    <slot />
+    <form
+      class="quote-form"
+      data-quote-form
+      data-endpoint={formEndpoint ?? ''}
+      data-thanks={url('/grazie/')}
+      data-wa={whatsappNumber ?? ''}
+      data-wa-messages={JSON.stringify(waMessages)}
+      action={formEndpoint ?? undefined}
+      method="post"
+      novalidate
+    >
+      <input type="hidden" name="_subject" value="Nuova richiesta dal sito Ferramenta Aruga" />
+      <div class="hp" aria-hidden="true">
+        <label>Non compilare questo campo <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></label>
+      </div>
+
+      <div class="field">
+        <label for="qf-servizio">Servizio</label>
+        <select id="qf-servizio" name="servizio" class="input">
+          {formOptions.map((o) => <option value={o.value} selected={o.value === service}>{o.label}</option>)}
+        </select>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="qf-nome">Nome</label>
+          <input id="qf-nome" name="nome" type="text" class="input" autocomplete="name" required aria-describedby="qf-nome-err" />
+          <p id="qf-nome-err" class="field-error" hidden></p>
+        </div>
+        <div class="field">
+          <label for="qf-telefono">Telefono</label>
+          <input id="qf-telefono" name="telefono" type="tel" class="input" autocomplete="tel" inputmode="tel" required aria-describedby="qf-telefono-err" />
+          <p id="qf-telefono-err" class="field-error" hidden></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="qf-messaggio">Descrivi il problema</label>
+        <textarea id="qf-messaggio" name="messaggio" rows="4" class="input" required aria-describedby="qf-messaggio-err" placeholder="Es. la chiave gira a fatica, porta d'ingresso del condominio"></textarea>
+        <p id="qf-messaggio-err" class="field-error" hidden></p>
+      </div>
+
+      {waHref && (
+        <a href={waHref} class="photo-btn" data-wa-photo data-track="whatsapp" data-track-where="form-foto" target="_blank" rel="noopener">
+          <Icon name="camera" size={26} stroke="#274695" />
+          <span>Invia la foto su WhatsApp <span class="optional">(facoltativa)</span></span>
+        </a>
+      )}
+
+      {prefs.length > 1 ? (
+        <fieldset class="pref">
+          <legend class="legend">Come preferisci essere ricontattato?</legend>
+          <div class="pref__opts">
+            {prefs.map((p, i) => (
+              <label class="pill-radio"><input type="radio" name="ricontatto" value={p} checked={i === 0} />{p}</label>
+            ))}
+          </div>
+        </fieldset>
+      ) : (
+        <input type="hidden" name="ricontatto" value="Telefono" />
+      )}
+
+      {email && (
+        <div class="field" data-email-field hidden>
+          <label for="qf-email">La tua email</label>
+          <input id="qf-email" name="email" type="email" class="input" autocomplete="email" aria-describedby="qf-email-err" />
+          <p id="qf-email-err" class="field-error" hidden></p>
+        </div>
+      )}
+
+      <div class="field">
+        <label class="consent">
+          <input id="qf-privacy" type="checkbox" name="privacy" value="accettata" required aria-describedby="qf-privacy-err" />
+          <span>Ho letto l'<a href={url('/privacy/')}>informativa privacy</a> e acconsento al trattamento dei dati per ricevere il preventivo.</span>
+        </label>
+        <p id="qf-privacy-err" class="field-error" hidden></p>
+      </div>
+
+      {formEndpoint ? (
+        <>
+          <button type="submit" class="submit">Invia la richiesta</button>
+          <p class="form-status" role="status" aria-live="polite" data-form-status></p>
+          <p class="form-note">Preferisci parlare con noi? <a href={telHref} style="font-weight:800" data-track="chiama" data-track-where="form">Chiama lo {phoneDisplay}</a></p>
+        </>
+      ) : (
+        <a href={telHref} class="form-fallback" data-track="chiama" data-track-where="form">Per ora chiamaci allo {phoneDisplay}</a>
+      )}
+    </form>
+  </div>
+</section>
+
+<script>
+  import { track } from '../scripts/track';
+
+  const MSG = {
+    nome: 'Scrivi il tuo nome.',
+    telVuoto: 'Scrivi il tuo numero di telefono.',
+    telErrato: 'Il numero non sembra corretto: controlla le cifre.',
+    emailVuota: 'Scrivi la tua email, così possiamo risponderti.',
+    emailErrata: "L'email non sembra corretta (esempio: nome@esempio.it).",
+    messaggio: 'Descrivi in breve il problema.',
+    privacy: "Per inviare la richiesta devi accettare l'informativa privacy.",
+    invio: 'Invio in corso…',
+    errore: 'Non siamo riusciti a inviare la richiesta. Riprova tra poco oppure chiamaci allo 011 324 1363.',
+  };
+
+  document.querySelectorAll<HTMLFormElement>('[data-quote-form]').forEach((form) => {
+    const endpoint = form.dataset.endpoint || '';
+    const $ = <T extends Element>(sel: string) => form.querySelector<T>(sel);
+    const select = $<HTMLSelectElement>('[name="servizio"]')!;
+    const photoBtn = $<HTMLAnchorElement>('[data-wa-photo]');
+    const emailField = $<HTMLElement>('[data-email-field]');
+    const status = $<HTMLElement>('[data-form-status]');
+    const waMessages: Record<string, string> = JSON.parse(form.dataset.waMessages || '{}');
+    let tried = false;
+
+    // Il pulsante foto cita il servizio scelto.
+    select.addEventListener('change', () => {
+      if (photoBtn && form.dataset.wa) {
+        photoBtn.href = `https://wa.me/${form.dataset.wa}?text=${encodeURIComponent(waMessages[select.value] || '')}`;
+      }
+    });
+
+    // Campo email visibile solo se si sceglie di essere ricontattati via email.
+    const pref = () => $<HTMLInputElement>('[name="ricontatto"]:checked')?.value || $<HTMLInputElement>('[name="ricontatto"]')?.value;
+    form.querySelectorAll('[name="ricontatto"]').forEach((r) =>
+      r.addEventListener('change', () => {
+        if (emailField) emailField.hidden = pref() !== 'Email';
+        if (tried) validate();
+      }),
+    );
+
+    function setError(input: HTMLInputElement | HTMLTextAreaElement, msg: string) {
+      const err = form.querySelector<HTMLElement>(`#${input.id}-err`);
+      if (!err) return;
+      input.setAttribute('aria-invalid', msg ? 'true' : 'false');
+      err.textContent = msg ? `⚠ ${msg}` : '';
+      err.hidden = !msg;
+    }
+
+    function check(name: string): string {
+      const el = form.elements.namedItem(name) as HTMLInputElement | null;
+      if (!el) return '';
+      const v = el.value.trim();
+      switch (name) {
+        case 'nome': return v.length < 2 ? MSG.nome : '';
+        case 'telefono': {
+          if (!v) return MSG.telVuoto;
+          const digits = v.replace(/[\s+\-./()]/g, '');
+          return /^\d{6,15}$/.test(digits) ? '' : MSG.telErrato;
+        }
+        case 'email':
+          if (pref() !== 'Email') return '';
+          if (!v) return MSG.emailVuota;
+          return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v) ? '' : MSG.emailErrata;
+        case 'messaggio': return v.length < 3 ? MSG.messaggio : '';
+        case 'privacy': return el.checked ? '' : MSG.privacy;
+      }
+      return '';
+    }
+
+    const fields = ['nome', 'telefono', 'email', 'messaggio', 'privacy'];
+    function validate(): HTMLElement | null {
+      let first: HTMLElement | null = null;
+      for (const name of fields) {
+        const el = form.elements.namedItem(name) as HTMLInputElement | null;
+        if (!el) continue;
+        const msg = check(name);
+        setError(el, msg);
+        if (msg && !first) first = el;
+      }
+      return first;
+    }
+
+    fields.forEach((name) => {
+      const el = form.elements.namedItem(name) as HTMLInputElement | null;
+      el?.addEventListener(el.type === 'checkbox' ? 'change' : 'input', () => {
+        if (tried) setError(el, check(name));
+      });
+      el?.addEventListener('blur', () => {
+        if (tried) setError(el, check(name));
+      });
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!endpoint) return; // Endpoint non impostato: nessun invio.
+      tried = true;
+      const firstInvalid = validate();
+      if (firstInvalid) {
+        firstInvalid.focus();
+        return;
+      }
+      const hp = form.elements.namedItem('_gotcha') as HTMLInputElement | null;
+      const thanks = `${form.dataset.thanks}?servizio=${encodeURIComponent(select.value)}`;
+      if (hp && hp.value) {
+        location.href = thanks;
+        return;
+      }
+      const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+      if (button) button.disabled = true;
+      if (status) { status.className = 'form-status'; status.textContent = MSG.invio; }
+      try {
+        const res = await fetch(endpoint, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+        if (!res.ok) throw new Error(String(res.status));
+        track('form_invio', { servizio: select.value });
+        location.href = thanks;
+      } catch {
+        if (status) { status.className = 'form-status form-status--error'; status.textContent = MSG.errore; }
+        if (button) button.disabled = false;
+      }
+    });
+  });
+</script>

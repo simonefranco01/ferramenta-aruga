@@ -1,0 +1,42 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo-trasparente.png';
+import { site, telHref, phoneDisplay, email, socialLinks } from '../lib/site';
+import { services } from '../data/services';
+import { url } from '../lib/url';
+---
+<footer class="site-footer on-dark">
+  <div class="footer-grid">
+    <div class="footer-col" style="gap:14px">
+      <div class="footer-logo">
+        <Image src={logo} alt="Ferramenta Aruga dal 1986" width={400} height={77} />
+      </div>
+      <a href={site.mapsUrl} target="_blank" rel="noopener">{site.address.street}, {site.address.city}</a>
+    </div>
+    <div class="footer-col" style="gap:6px">
+      <strong>Orari</strong>
+      <span>{site.hours.daysShort} {site.hours.morning}</span>
+      <span>e {site.hours.afternoon}</span>
+      <span>{site.hours.closed}</span>
+      <a href={telHref} style="font-weight:700;margin-top:6px" data-track="chiama" data-track-where="footer">{phoneDisplay}</a>
+      {email && <a href={`mailto:${email}`}>{email}</a>}
+    </div>
+    <nav class="footer-col" aria-label="Servizi">
+      <strong>Servizi</strong>
+      {services.map((s) => <a href={url(s.path)}>{s.footerTitle}</a>)}
+      <a href={url('/professionisti/')}>Professionisti e strutture</a>
+    </nav>
+    <div class="footer-col">
+      {socialLinks.length > 0 && (
+        <>
+          <strong>Seguici</strong>
+          {socialLinks.map((s) => <a href={s.href} target="_blank" rel="noopener">{s.label}</a>)}
+        </>
+      )}
+      {socialLinks.length === 0 && <strong>Informazioni</strong>}
+      <a href={url('/contatti/')}>Contatti</a>
+      <a href={url('/privacy/')}>Privacy</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© {site.name} · dal {site.foundingYear} · {site.legalName}</div>
+</footer>

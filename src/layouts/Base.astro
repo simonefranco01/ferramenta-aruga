@@ -1,0 +1,105 @@
+---
+import '@fontsource-variable/bricolage-grotesque/opsz.css';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import MobileBar from '../components/MobileBar.astro';
+import { site, email } from '../lib/site';
+import { url, absoluteUrl } from '../lib/url';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Destinazione di "Chiedi preventivo" (header e barra mobile). */
+  ctaHref?: string;
+  noindex?: boolean;
+  /** Dati strutturati aggiuntivi (es. FAQPage). */
+  jsonLd?: Record<string, unknown>[];
+}
+
+const { title, description, ctaHref = url('/contatti/'), noindex = false, jsonLd = [] } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = absoluteUrl('/og-image.jpg', Astro.site);
+const robots = site.staging || noindex ? 'noindex, nofollow' : 'index, follow';
+const homeUrl = absoluteUrl('/', Astro.site);
+
+const business = {
+  '@context': 'https://schema.org',
+  '@type': 'HardwareStore',
+  '@id': `${homeUrl}#negozio`,
+  name: site.name,
+  alternateName: site.googleName,
+  legalName: site.legalName,
+  description: site.tagline,
+  foundingDate: String(site.foundingYear),
+  url: homeUrl,
+  logo: absoluteUrl('/logo.png', Astro.site),
+  image: ogImage,
+  telephone: site.phone.tel,
+  ...(email ? { email } : {}),
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address.street,
+    addressLocality: site.address.city,
+    addressRegion: site.address.region,
+    addressCountry: site.address.country,
+  },
+  areaServed: `${site.address.city}`,
+  hasMap: site.mapsUrl,
+  openingHoursSpecification: site.hours.spec.map((s) => ({
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: s.days.map((d) => `https://schema.org/${d}`),
+    opens: s.opens,
+    closes: s.closes,
+  })),
+  ...(Object.values(site.social).some(Boolean) ? { sameAs: Object.values(site.social).filter(Boolean) } : {}),
+};
+const schemas = [business, ...jsonLd];
+---
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#F6C801" />
+    <link rel="icon" href={url('/favicon.ico')} sizes="32x32" />
+    <link rel="icon" href={url('/favicon.png')} type="image/png" sizes="192x192" />
+    <link rel="apple-touch-icon" href={url('/apple-touch-icon.png')} />
+    <link rel="sitemap" href={url('/sitemap-index.xml')} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="it_IT" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Logo Ferramenta Aruga, dal 1986" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    {schemas.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+  </head>
+  <body>
+    <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+    <Header ctaHref={ctaHref} />
+    <main id="contenuto">
+      <slot />
+    </main>
+    <Footer />
+    <MobileBar ctaHref={ctaHref} />
+    <script>
+      import '../scripts/motion';
+      import '../scripts/track';
+    </script>
+  </body>
+</html>

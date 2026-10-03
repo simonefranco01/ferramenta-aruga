@@ -1,0 +1,16 @@
+---
+// Recensione cliente: solo nome e iniziale.
+interface Props {
+  quote: string;
+  author: string;
+  variant?: 'default' | 'long' | 'yellow' | 'feature';
+  delay?: number;
+  rv?: 'pop' | 'up';
+}
+const { quote, author, variant = 'default', delay = 0, rv = 'pop' } = Astro.props;
+---
+<figure class:list={['review', variant !== 'default' && `review--${variant}`]} data-rv={rv} data-d={delay}>
+  {variant === 'feature' && <span class="stars" role="img" aria-label="5 stelle su 5">★★★★★</span>}
+  <blockquote>“{quote}”</blockquote>
+  <figcaption>{author}</figcaption>
+</figure>

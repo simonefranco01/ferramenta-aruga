@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import { services } from '../data/services';
+import { url } from '../lib/url';
+---
+<Base
+  title="Pagina non trovata | Ferramenta Aruga"
+  description="La pagina che cerchi non esiste. Scegli uno dei nostri servizi oppure torna alla home."
+  noindex
+>
+  <section class="section bg-yellow">
+    <div class="hero-home">
+      <h1 class="h1-home">Questa pagina non c'è. Ma una soluzione sì.</h1>
+      <p class="lead">Scegli di cosa hai bisogno, oppure <a href={url('/')} style="font-weight:800">torna alla home</a>.</p>
+      <div class="service-grid" style="margin-top:36px">
+        {services.map((s) => <ServiceCard service={s} />)}
+      </div>
+    </div>
+  </section>
+</Base>

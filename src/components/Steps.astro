@@ -1,0 +1,21 @@
+---
+// "Come funziona": righello a 3 segmenti.
+interface Props {
+  steps?: string[];
+}
+const {
+  steps = [
+    'Scegli il servizio e scrivici. Puoi allegare una foto.',
+    'Ti rispondiamo via WhatsApp o email, di solito entro poche ore in orario di negozio.',
+    'Preventivo gratuito, poi facciamo il lavoro.',
+  ],
+} = Astro.props;
+---
+<ol class="steps">
+  {steps.map((text, i) => (
+    <li class="step" data-rv="up" data-d={i * 120}>
+      <div class="ruler" data-rv="ruler" data-d={i * 180} data-dur="700" aria-hidden="true"><span>{i + 1}</span></div>
+      <p><span class="sr-only">Passo {i + 1}: </span>{text}</p>
+    </li>
+  ))}
+</ol>

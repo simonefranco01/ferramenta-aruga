@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>html{scroll-behavior:smooth}body{margin:0;background:#FFFBEA;color:#141414;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:19px;line-height:1.5;-webkit-font-smoothing:antialiased}a{color:#274695}a:hover{color:#141414}*{box-sizing:border-box}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}</style>
+</helmet>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#F6C801"></rect><text x="50" y="64" text-anchor="middle" font-family="Arial Black,Arial" font-weight="900" font-size="40" fill="#274695">FA</text></svg></template>
+<div style="min-height:100%">
+<header style="position:sticky;top:0;z-index:20;background:#F6C801;border-bottom:3px solid #141414">
+  <div style="max-width:1240px;margin:0 auto;padding:12px clamp(16px,4vw,40px);display:flex;align-items:center;justify-content:space-between;gap:12px">
+    <a href="A-Insegna-Home.dc.html" aria-label="Ferramenta Aruga, torna alla home" style="display:flex;width:clamp(170px,22vw,250px);aspect-ratio:1896/365">
+      <img data-rv="hammer" data-dur="1000" data-d="300" src="assets/logo-T.png" alt="" style="width:10.81%;height:100%;transform-origin:45% 96%">
+      <img src="assets/logo-resto.png" alt="Ferramenta Aruga dal 1986" style="width:89.19%;height:100%">
+    </a>
+    <div style="display:flex;gap:10px;align-items:center">
+      <a href="tel:0113241363" aria-label="Chiama lo 011 324 1363" style="min-height:48px;min-width:48px;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 14px;border:3px solid #141414;border-radius:999px;background:#fff;color:#141414;font-weight:700;text-decoration:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg><sc-if value="{{ d }}" hint-placeholder-val="{{ true }}"><span>011 324 1363</span></sc-if></a>
+      <sc-if value="{{ d }}" hint-placeholder-val="{{ true }}"><a href="#servizi" style="min-height:48px;display:flex;align-items:center;padding:0 22px;border:3px solid #141414;border-radius:999px;background:#274695;color:#fff;font-weight:800;text-decoration:none;box-shadow:4px 4px 0 #141414">Chiedi preventivo</a></sc-if>
+    </div>
+  </div>
+</header>
+
+<section style="background:#F6C801;border-bottom:3px solid #141414">
+  <div style="max-width:1240px;margin:0 auto;padding:clamp(28px,5vw,64px) clamp(16px,4vw,40px) clamp(36px,5vw,64px)">
+    <h1 data-rv="up" style="margin:0;font-size:clamp(46px,7.6vw,108px);line-height:.95;letter-spacing:-.035em;font-weight:800;color:#274695;text-wrap:balance;max-width:14ch">Arrivi con un problema, esci con la soluzione.</h1>
+    <p data-rv="up" data-d="120" style="margin:22px 0 0;max-width:40ch;font-size:clamp(19px,1.8vw,23px);line-height:1.45;font-weight:600;color:#141414;text-wrap:pretty">Ferramenta e colorificio a Santa Rita dal 1986. Serrature, colori su misura, zanzariere e tende: il lavoro lo facciamo noi.</p>
+    <ul data-rv="up" data-d="220" style="list-style:none;margin:24px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px">
+      <li style="display:flex;align-items:center;gap:6px;padding:8px 14px;background:#fff;border:2.5px solid #141414;border-radius:999px;font-size:17px;font-weight:700">★ 4,8 su Google · 208 recensioni</li>
+      <li style="display:flex;align-items:center;gap:6px;padding:8px 14px;background:#fff;border:2.5px solid #141414;border-radius:999px;font-size:17px;font-weight:700">Aperti anche il sabato</li>
+      <li style="display:flex;align-items:center;gap:6px;padding:8px 14px;background:#fff;border:2.5px solid #141414;border-radius:999px;font-size:17px;font-weight:700">Nessun costo di uscita</li>
+    </ul>
+
+    <h2 id="servizi" style="scroll-margin-top:90px;margin:clamp(40px,5vw,56px) 0 18px;font-size:clamp(30px,3.4vw,44px);line-height:1.05;letter-spacing:-.02em;font-weight:800;color:#141414">Di cosa hai bisogno?</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px">
+      <a data-rv="pop" data-d="0" href="A-Insegna-Serrature.dc.html" style="display:flex;flex-direction:column;gap:12px;padding:22px;background:#fff;border:3px solid #141414;border-radius:18px;box-shadow:7px 7px 0 #141414;color:#141414;text-decoration:none;min-height:230px" style-hover="transform:translate(-2px,-2px);box-shadow:9px 9px 0 #141414">
+        <span style="width:60px;height:60px;display:flex;align-items:center;justify-content:center;background:#274695;color:#F6C801;border:3px solid #141414;border-radius:14px"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="8" cy="12" r="4"></circle><path d="M12 12h9M18 12v3M21 12v2"></path></svg></span>
+        <span style="font-size:25px;line-height:1.1;font-weight:800;color:#274695">Serrature e cilindri</span>
+        <span style="font-size:18px;line-height:1.45;flex:1">Cambio cilindri e serrature, dalla doppia mappa alla porta blindata.</span>
+        <span style="align-self:flex-end;width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:#F6C801;border:3px solid #141414;border-radius:999px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+      </a>
+      <a data-rv="pop" data-d="90" href="#" style="display:flex;flex-direction:column;gap:12px;padding:22px;background:#fff;border:3px solid #141414;border-radius:18px;box-shadow:7px 7px 0 #141414;color:#141414;text-decoration:none;min-height:230px" style-hover="transform:translate(-2px,-2px);box-shadow:9px 9px 0 #141414">
+        <span style="width:60px;height:60px;display:flex;align-items:center;justify-content:center;background:#274695;color:#F6C801;border:3px solid #141414;border-radius:14px"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="14" height="6" rx="1"></rect><path d="M17 6h3v5h-8v3"></path><rect x="10.5" y="14" width="3" height="7" rx="1"></rect></svg></span>
+        <span style="font-size:25px;line-height:1.1;font-weight:800;color:#274695">Colori e vernici su misura</span>
+        <span style="font-size:18px;line-height:1.45;flex:1">Il colore che vuoi, preparato al tintometro. Rivenditori ufficiali San Marco.</span>
+        <span style="align-self:flex-end;width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:#F6C801;border:3px solid #141414;border-radius:999px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+      </a>
+      <a data-rv="pop" data-d="180" href="#" style="display:flex;flex-direction:column;gap:12px;padding:22px;background:#fff;border:3px solid #141414;border-radius:18px;box-shadow:7px 7px 0 #141414;color:#141414;text-decoration:none;min-height:230px" style-hover="transform:translate(-2px,-2px);box-shadow:9px 9px 0 #141414">
+        <span style="width:60px;height:60px;display:flex;align-items:center;justify-content:center;background:#274695;color:#F6C801;border:3px solid #141414;border-radius:14px"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="4" y="3" width="16" height="18" rx="1"></rect><path d="M4 8h16M4 13h16M9 3v18M15 3v18"></path></svg></span>
+        <span style="font-size:25px;line-height:1.1;font-weight:800;color:#274695">Zanzariere e tende su misura</span>
+        <span style="font-size:18px;line-height:1.45;flex:1">Prendiamo le misure a casa e montiamo noi.</span>
+        <span style="align-self:flex-end;width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:#F6C801;border:3px solid #141414;border-radius:999px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+      </a>
+      <a data-rv="pop" data-d="270" href="#" style="display:flex;flex-direction:column;gap:12px;padding:22px;background:#274695;border:3px solid #141414;border-radius:18px;box-shadow:7px 7px 0 #141414;color:#fff;text-decoration:none;min-height:230px" style-hover="transform:translate(-2px,-2px);box-shadow:9px 9px 0 #141414">
+        <span style="width:60px;height:60px;display:flex;align-items:center;justify-content:center;background:#F6C801;color:#141414;border:3px solid #141414;border-radius:14px"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"></path></svg></span>
+        <span style="font-size:25px;line-height:1.1;font-weight:800;color:#F6C801">Hai un problema? Troviamo la soluzione</span>
+        <span style="font-size:18px;line-height:1.45;flex:1">Non trovi il pezzo giusto? Portaci il problema, cerchiamo insieme l'alternativa.</span>
+        <span style="align-self:flex-end;width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:#F6C801;border:3px solid #141414;border-radius:999px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section style="border-bottom:3px solid #141414;background:#FFFBEA">
+  <div style="max-width:1240px;margin:0 auto;padding:26px clamp(16px,4vw,40px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px">
+    <div style="display:flex;flex-direction:column;gap:4px;max-width:720px">
+      <span style="font-size:15px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#274695">Per professionisti e strutture</span>
+      <p style="margin:0;font-size:19px">Decoratori, manutentori e strutture: vernici San Marco da rivenditore ufficiale e un negozio aperto anche il sabato.</p>
+    </div>
+    <a href="#servizi" style="min-height:48px;display:flex;align-items:center;gap:8px;padding:0 20px;border:3px solid #141414;border-radius:999px;background:#fff;color:#141414;font-weight:800;text-decoration:none">Parliamone <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+  </div>
+</section>
+
+<section style="background:#fff;border-bottom:3px solid #141414">
+  <div style="max-width:1240px;margin:0 auto;padding:clamp(48px,6vw,88px) clamp(16px,4vw,40px)">
+    <h2 style="margin:0 0 36px;font-size:clamp(34px,4.2vw,56px);line-height:1;letter-spacing:-.03em;font-weight:800;color:#274695">Come funziona</h2>
+    <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px 0">
+      <li data-rv="up" style="display:flex;flex-direction:column;gap:14px">
+        <div data-rv="ruler" data-d="0" data-dur="700" style="position:relative;height:76px;margin-right:-3px;border:3px solid #141414;border-radius:{{ rr1 }};background:repeating-linear-gradient(90deg,transparent 0 13px,#141414 13px 16px,transparent 16px 80px) 0 0/100% 22px no-repeat,repeating-linear-gradient(90deg,transparent 0 14px,#141414 14px 16px) 0 0/100% 11px no-repeat,#F6C801;box-shadow:4px 4px 0 #141414;transform-origin:left;display:flex;align-items:flex-end;padding:0 0 6px 14px"><span style="font-size:38px;line-height:1;font-weight:800;color:#141414">1</span></div>
+        <p style="margin:0;padding-right:24px;font-size:21px;line-height:1.4;font-weight:600">Scegli il servizio e scrivici. Puoi allegare una foto.</p>
+      </li>
+      <li data-rv="up" data-d="120" style="display:flex;flex-direction:column;gap:14px">
+        <div data-rv="ruler" data-d="180" data-dur="700" style="position:relative;height:76px;margin-right:-3px;border:3px solid #141414;border-radius:{{ rr2 }};background:repeating-linear-gradient(90deg,transparent 0 13px,#141414 13px 16px,transparent 16px 80px) 0 0/100% 22px no-repeat,repeating-linear-gradient(90deg,transparent 0 14px,#141414 14px 16px) 0 0/100% 11px no-repeat,#F6C801;box-shadow:4px 4px 0 #141414;transform-origin:left;display:flex;align-items:flex-end;padding:0 0 6px 14px"><span style="font-size:38px;line-height:1;font-weight:800;color:#141414">2</span></div>
+        <p style="margin:0;padding-right:24px;font-size:21px;line-height:1.4;font-weight:600">Ti rispondiamo via WhatsApp o email, di solito entro poche ore in orario di negozio.</p>
+      </li>
+      <li data-rv="up" data-d="240" style="display:flex;flex-direction:column;gap:14px">
+        <div data-rv="ruler" data-d="360" data-dur="700" style="position:relative;height:76px;margin-right:-3px;border:3px solid #141414;border-radius:{{ rr3 }};background:repeating-linear-gradient(90deg,transparent 0 13px,#141414 13px 16px,transparent 16px 80px) 0 0/100% 22px no-repeat,repeating-linear-gradient(90deg,transparent 0 14px,#141414 14px 16px) 0 0/100% 11px no-repeat,#F6C801;box-shadow:4px 4px 0 #141414;transform-origin:left;display:flex;align-items:flex-end;padding:0 0 6px 14px"><span style="font-size:38px;line-height:1;font-weight:800;color:#274695">3</span></div>
+        <p style="margin:0;padding-right:24px;font-size:21px;line-height:1.4;font-weight:600">Preventivo gratuito, poi facciamo il lavoro.</p>
+      </li>
+    </ol>
+    <a href="#servizi" style="margin-top:36px;min-height:56px;display:inline-flex;align-items:center;gap:10px;padding:0 26px;border:3px solid #141414;border-radius:999px;background:#274695;color:#fff;font-size:20px;font-weight:800;text-decoration:none;box-shadow:5px 5px 0 #141414">Chiedi il preventivo gratuito</a>
+  </div>
+</section>
+
+<section style="background:#274695;color:#fff;border-bottom:3px solid #141414">
+  <div style="max-width:1240px;margin:0 auto;padding:clamp(48px,6vw,88px) clamp(16px,4vw,40px)">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 40px;margin-bottom:36px">
+      <h2 style="margin:0;font-size:clamp(34px,4.2vw,56px);line-height:1;letter-spacing:-.03em;font-weight:800;color:#fff">Cosa dicono i clienti</h2>
+      <div style="display:flex;align-items:center;gap:16px;padding:12px 20px;background:#F6C801;color:#141414;border:3px solid #141414;border-radius:18px;box-shadow:6px 6px 0 #141414">
+        <span style="font-size:56px;line-height:1;font-weight:800;color:#274695"><span data-rv="count" data-to="4.8" data-dec="1">4,8</span></span>
+        <span style="display:flex;flex-direction:column;font-weight:700;line-height:1.25"><span style="letter-spacing:2px">★★★★★</span><span><span data-rv="count" data-to="208">208</span> recensioni Google</span></span>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px">
+      <figure data-rv="pop" style="margin:0;padding:22px;background:#fff;color:#141414;border:3px solid #141414;border-radius:18px;display:flex;flex-direction:column;gap:14px"><blockquote style="margin:0;font-size:20px;line-height:1.4;font-weight:600">“Se si arriva con un problema la soluzione si trova! Grazie di cuore”</blockquote><figcaption style="font-weight:800;color:#274695">Davide B.</figcaption></figure>
+      <figure data-rv="pop" data-d="80" style="margin:0;padding:22px;background:#F6C801;color:#141414;border:3px solid #141414;border-radius:18px;display:flex;flex-direction:column;gap:14px"><blockquote style="margin:0;font-size:24px;line-height:1.25;font-weight:800;color:#274695">“È più di una ferramenta, è più di un colorificio.”</blockquote><figcaption style="font-weight:800">Paolo R.</figcaption></figure>
+      <figure data-rv="pop" data-d="160" style="margin:0;padding:22px;background:#fff;color:#141414;border:3px solid #141414;border-radius:18px;display:flex;flex-direction:column;gap:14px"><blockquote style="margin:0;font-size:19px;line-height:1.45;font-weight:600">“La mia ferramenta di fiducia nel cuore del quartiere Santa Rita. A gestione familiare il personale è accogliente, gentile, disponibile, molto professionale e competente.”</blockquote><figcaption style="font-weight:800;color:#274695">Franca S.</figcaption></figure>
+      <figure data-rv="pop" style="margin:0;padding:22px;background:#fff;color:#141414;border:3px solid #141414;border-radius:18px;display:flex;flex-direction:column;gap:14px"><blockquote style="margin:0;font-size:20px;line-height:1.4;font-weight:600">“Hanno una grande pazienza anche con chi è alle prime armi!”</blockquote><figcaption style="font-weight:800;color:#274695">Anedda MC</figcaption></figure>
+      <figure data-rv="pop" data-d="80" style="margin:0;padding:22px;background:#fff;color:#141414;border:3px solid #141414;border-radius:18px;display:flex;flex-direction:column;gap:14px"><blockquote style="margin:0;font-size:20px;line-height:1.4;font-weight:600">“Gentilissimi, hanno una soluzione per tutto e prezzi onestissimi!”</blockquote><figcaption style="font-weight:800;color:#274695">Ludovica D.</figcaption></figure>
+      <figure data-rv="pop" data-d="160" style="margin:0;padding:22px;background:#fff;color:#141414;border:3px solid #141414;border-radius:18px;display:flex;flex-direction:column;gap:14px"><blockquote style="margin:0;font-size:20px;line-height:1.4;font-weight:600">“Seri e competenti, ti aiutano a trovare soluzioni con cooperazione e disponibilità di altri tempi.”</blockquote><figcaption style="font-weight:800;color:#274695">Pier Paolo C.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section style="background:#F6C801;border-bottom:3px solid #141414">
+  <div style="max-width:1240px;margin:0 auto;padding:clamp(48px,6vw,88px) clamp(16px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(28px,4vw,56px);align-items:start">
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <h2 style="margin:0;font-size:clamp(34px,4.2vw,56px);line-height:1;letter-spacing:-.03em;font-weight:800;color:#274695">La nostra storia: <span data-rv="count" data-to="40">40</span> anni a Santa Rita</h2>
+      <p style="margin:0;font-size:20px;line-height:1.55;font-weight:500;text-wrap:pretty;max-width:52ch">Nel 1986 il nonno apre il negozio in Via Barletta. Poi arriva Giorgio, oggi c'è Vittorio: tre generazioni che hanno fatto crescere l'attività mantenendo al centro la qualità, la disponibilità e la cura del cliente. Oggi siamo ferramenta, colorificio con servizio tintometrico San Marco, chiavi e serrature, casalinghi, materiale elettrico e idraulico.</p>
+      <ol style="list-style:none;margin:10px 0 0;padding:0 0 0 48px;position:relative;display:flex;flex-direction:column;gap:26px"><span aria-hidden="true" style="position:absolute;left:12px;top:8px;bottom:8px;width:4px;background:rgba(20,20,20,.2);border-radius:4px"></span><span aria-hidden="true" data-rv="fill" data-dur="2600" style="position:absolute;left:12px;top:8px;bottom:8px;width:4px;background:#274695;border-radius:4px;transform-origin:top"></span><li style="position:relative"><svg data-rv="screw" data-d="200" width="28" height="28" viewBox="0 0 22 22" style="position:absolute;left:-48px;top:2px"><circle cx="11" cy="11" r="9.5" fill="#fff" stroke="#141414" stroke-width="2"></circle><path d="M6 11h10M11 6v10" stroke="#141414" stroke-width="2.2" stroke-linecap="round"></path></svg><strong style="display:block;font-size:26px;line-height:1.1;font-weight:800;color:#274695">1986</strong><span style="font-size:18px;font-weight:600">Il nonno apre in Via Barletta</span></li><li style="position:relative"><svg data-rv="screw" data-d="900" width="28" height="28" viewBox="0 0 22 22" style="position:absolute;left:-48px;top:2px"><circle cx="11" cy="11" r="9.5" fill="#fff" stroke="#141414" stroke-width="2"></circle><path d="M6 11h10M11 6v10" stroke="#141414" stroke-width="2.2" stroke-linecap="round"></path></svg><strong style="display:block;font-size:26px;line-height:1.1;font-weight:800;color:#274695">Poi</strong><span style="font-size:18px;font-weight:600">Arriva Giorgio</span></li><li style="position:relative"><svg data-rv="screw" data-d="1600" width="28" height="28" viewBox="0 0 22 22" style="position:absolute;left:-48px;top:2px"><circle cx="11" cy="11" r="9.5" fill="#fff" stroke="#141414" stroke-width="2"></circle><path d="M6 11h10M11 6v10" stroke="#141414" stroke-width="2.2" stroke-linecap="round"></path></svg><strong style="display:block;font-size:26px;line-height:1.1;font-weight:800;color:#274695">Oggi</strong><span style="font-size:18px;font-weight:600">C'è Vittorio</span></li><li style="position:relative"><svg data-rv="screw" data-d="2300" width="28" height="28" viewBox="0 0 22 22" style="position:absolute;left:-48px;top:2px"><circle cx="11" cy="11" r="9.5" fill="#274695" stroke="#141414" stroke-width="2"></circle><path d="M6 11h10M11 6v10" stroke="#F6C801" stroke-width="2.2" stroke-linecap="round"></path></svg><strong style="display:block;font-size:26px;line-height:1.1;font-weight:800;color:#274695">2026</strong><span style="font-size:18px;font-weight:600">40 anni</span></li></ol>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <div style="position:relative;aspect-ratio:4/3;border:3px solid #141414;border-radius:18px;box-shadow:8px 8px 0 #141414;background:repeating-linear-gradient(135deg,#fff 0 14px,#FFF3B8 14px 28px);display:flex;align-items:center;justify-content:center">
+        <span style="font:600 15px ui-monospace,Menlo,monospace;background:#141414;color:#fff;padding:6px 10px;border-radius:6px">FOTO: quattro generazioni</span>
+        <img data-rv="pop" data-d="200" src="assets/logo-40-anni.png" alt="Logo 40 anni di attività, Ferramenta Aruga" style="position:absolute;right:-14px;bottom:-24px;width:clamp(120px,32%,190px);aspect-ratio:1;border:3px solid #141414;border-radius:999px;object-fit:cover;background:#F6C801">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#FFFBEA;border-bottom:3px solid #141414">
+  <div style="max-width:1240px;margin:0 auto;padding:clamp(48px,6vw,88px) clamp(16px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:28px;align-items:stretch">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <h2 style="margin:0;font-size:clamp(34px,4.2vw,56px);line-height:1;letter-spacing:-.03em;font-weight:800;color:#274695">Dove siamo e orari</h2>
+      <div style="display:flex;flex-direction:column;gap:14px;padding:22px;background:#fff;border:3px solid #141414;border-radius:18px">
+        <div><div style="font-size:15px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#274695">Indirizzo</div><div style="font-size:21px;font-weight:700">Via Barletta 55/B, Torino</div><div>Quartiere Santa Rita</div></div>
+        <div style="border-top:2px dashed #141414;padding-top:14px"><div style="font-size:15px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#274695">Orari</div><div style="font-weight:700">Lunedì–sabato</div><div>9:00–12:15 e 15:15–19:15</div><div>Domenica chiuso</div></div>
+        <div style="border-top:2px dashed #141414;padding-top:14px"><div style="font-size:15px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#274695">Telefono</div><a href="tel:0113241363" style="font-size:24px;font-weight:800;color:#141414;text-decoration:none">011 324 1363</a></div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px">
+        <a href="#" style="min-height:52px;display:flex;align-items:center;padding:0 22px;border:3px solid #141414;border-radius:999px;background:#F6C801;color:#141414;font-weight:800;text-decoration:none;box-shadow:4px 4px 0 #141414">Indicazioni</a>
+        <a href="tel:0113241363" style="min-height:52px;display:flex;align-items:center;padding:0 22px;border:3px solid #141414;border-radius:999px;background:#274695;color:#fff;font-weight:800;text-decoration:none;box-shadow:4px 4px 0 #141414">Chiama</a>
+      </div>
+    </div>
+    <div style="min-height:340px;border:3px solid #141414;border-radius:18px;background:#E8EEF8;background-image:linear-gradient(#cfd9ec 2px,transparent 2px),linear-gradient(90deg,#cfd9ec 2px,transparent 2px);background-size:40px 40px;display:flex;align-items:center;justify-content:center"><span style="font:600 15px ui-monospace,Menlo,monospace;background:#141414;color:#fff;padding:6px 10px;border-radius:6px">MAPPA: Via Barletta 55/B</span></div>
+  </div>
+</section>
+
+<footer style="background:#141414;color:#fff">
+  <div style="max-width:1240px;margin:0 auto;padding:48px clamp(16px,4vw,40px) 28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px">
+    <div style="display:flex;flex-direction:column;gap:14px"><div style="background:#F6C801;border-radius:12px;padding:12px 14px;width:max-content;max-width:100%"><img src="assets/logo-trasparente.png" alt="Ferramenta Aruga dal 1986" style="width:200px;display:block"></div><span style="color:#ddd">Via Barletta 55/B, Torino</span></div>
+    <div style="display:flex;flex-direction:column;gap:6px;color:#ddd"><strong style="color:#F6C801">Orari</strong><span>Lun–sab 9:00–12:15</span><span>e 15:15–19:15</span><span>Domenica chiuso</span><a href="tel:0113241363" style="color:#fff;font-weight:700;margin-top:6px">011 324 1363</a></div>
+    <nav style="display:flex;flex-direction:column;gap:8px"><strong style="color:#F6C801">Servizi</strong><a href="A-Insegna-Serrature.dc.html" style="color:#fff">Serrature e cilindri</a><a href="#" style="color:#fff">Colori e vernici su misura</a><a href="#" style="color:#fff">Zanzariere e tende su misura</a><a href="#" style="color:#fff">Troviamo la soluzione</a></nav>
+    <div style="display:flex;flex-direction:column;gap:8px"><strong style="color:#F6C801">Seguici</strong><a href="#" style="color:#fff">Facebook</a><a href="#" style="color:#fff">Instagram</a><a href="#" style="color:#fff;margin-top:8px">Privacy</a></div>
+  </div>
+  <div style="max-width:1240px;margin:0 auto;padding:16px clamp(16px,4vw,40px) 28px;border-top:1px solid #333;color:#aaa;font-size:15px">© Ferramenta Aruga · dal 1986</div>
+  <sc-if value="{{ m }}" hint-placeholder-val="{{ false }}"><div style="height:84px"></div></sc-if>
+</footer>
+
+<sc-if value="{{ m }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;gap:10px;padding:12px 14px calc(12px + env(safe-area-inset-bottom));background:#F6C801;border-top:3px solid #141414">
+    <a href="#servizi" style="flex:1;min-height:52px;display:flex;align-items:center;justify-content:center;border:3px solid #141414;border-radius:999px;background:#274695;color:#fff;font-size:19px;font-weight:800;text-decoration:none">Chiedi preventivo</a>
+    <a href="tel:0113241363" aria-label="Chiama" style="width:56px;min-height:52px;display:flex;align-items:center;justify-content:center;border:3px solid #141414;border-radius:999px;background:#fff;color:#141414"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg></a>
+  </div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { m: window.innerWidth < 760 };
+  componentDidMount() {
+    this._r = () => this.setState({ m: window.innerWidth < 760 });
+    window.addEventListener('resize', this._r);
+    this._t = setTimeout(() => this.initMotion(), 150);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this._r); clearTimeout(this._t); this._io && this._io.disconnect(); }
+  initMotion() {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const K = {
+      screw: [{ opacity: 0, transform: 'rotate(-300deg) scale(.4)' }, { opacity: 1, transform: 'none' }],
+      fill: [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }],
+      ruler: [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }],
+      up: [{ opacity: 0, transform: 'translateY(26px)' }, { opacity: 1, transform: 'none' }],
+      pop: [{ opacity: 0, transform: 'translateY(30px) scale(.95)' }, { opacity: 1, transform: 'none' }],
+      hammer: [{ transform: 'rotate(0)' }, { transform: 'rotate(-32deg)', offset: .35 }, { transform: 'rotate(5deg)', offset: .55 }, { transform: 'rotate(-4deg)', offset: .72 }, { transform: 'rotate(0)' }]
+    };
+    this._io = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target; this._io.unobserve(el);
+      const k = el.dataset.rv, d = +(el.dataset.d || 0);
+      if (k === 'count') return this.count(el, d);
+      el.animate(K[k] || K.up, { duration: +(el.dataset.dur || 600), delay: d, easing: k === 'fill' ? 'linear' : 'cubic-bezier(.2,.8,.2,1)', fill: 'backwards' });
+    }), { threshold: .12 });
+    document.querySelectorAll('[data-rv]').forEach(el => this._io.observe(el));
+  }
+  count(el, d) {
+    const to = parseFloat(el.dataset.to), dec = +(el.dataset.dec || 0), t0 = performance.now() + d;
+    const f = now => { const p = Math.min(1, Math.max(0, (now - t0) / 1400)); el.textContent = (to * (1 - Math.pow(1 - p, 3))).toFixed(dec).replace('.', ','); if (p < 1) requestAnimationFrame(f); };
+    requestAnimationFrame(f);
+  }
+  renderVals() { const w = !this.state.m; return { rr1: w ? '10px 0 0 10px' : '10px', rr2: w ? '0' : '10px', rr3: w ? '0 10px 10px 0' : '10px', m: this.state.m, d: !this.state.m }; }
+}
+</script>
+</body>
+</html>

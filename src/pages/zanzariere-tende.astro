@@ -1,0 +1,32 @@
+---
+import ServicePage from '../layouts/ServicePage.astro';
+import { site } from '../lib/site';
+---
+<ServicePage
+  title="Zanzariere e tende su misura a Torino Santa Rita | Ferramenta Aruga"
+  description="Zanzariere su misura, tendaggi, binari per balcone e bastoni per tende a Torino. Prendiamo le misure a casa e montiamo noi. Preventivo gratuito, nessun costo di uscita."
+  service="zanzariere-tende"
+  tag="Zanzariere e tende su misura"
+  h1="Zanzariere e tende fatte per le tue finestre."
+  lead="Prendiamo le misure a casa e montiamo noi. Preventivo gratuito, nessun costo di uscita."
+  photoLabel="zanzariera montata su una finestra"
+  whatWeDo={[
+    'Zanzariere su misura',
+    'Tendaggi',
+    'Binari per balcone',
+    'Bastoni per tende',
+    'Misure prese a casa tua',
+    'Montaggio fatto da noi',
+  ]}
+  why={[
+    { kind: 'years', value: 2026 - site.foundingYear, label: 'anni nel quartiere' },
+    { kind: 'title', text: 'Nessun costo di uscita' },
+    { kind: 'title', text: 'Aperti anche il sabato' },
+    { kind: 'text', text: 'Prendiamo le misure a casa tua e montiamo noi: non devi fare niente.' },
+  ]}
+  faqs={[
+    { q: 'Venite voi a prendere le misure?', a: 'Sì, prendiamo le misure a casa tua.' },
+    { q: 'Montate voi?', a: 'Sì, il montaggio lo facciamo noi.' },
+    { q: 'Quanto costa?', a: "Il preventivo è gratuito e non c'è costo di uscita. Il prezzo dipende dalle misure e dal modello." },
+  ]}
+/>

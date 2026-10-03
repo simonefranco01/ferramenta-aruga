@@ -1,0 +1,19 @@
+---
+// FAQ con <details> nativi, la prima aperta. Lo schema FAQPage lo genera faqJsonLd().
+export interface FaqItem { q: string; a: string }
+interface Props { items: FaqItem[]; title?: string }
+const { items, title = 'Domande frequenti' } = Astro.props;
+---
+<section class="section bg-cream" aria-labelledby="faq-title">
+  <div class="container-narrow pad-y">
+    <h2 id="faq-title" class="h2-sm" style="margin-bottom:24px">{title}</h2>
+    <div class="faq">
+      {items.map((item, i) => (
+        <details open={i === 0}>
+          <summary>{item.q}<span class="faq__plus" aria-hidden="true">+</span></summary>
+          <p class="faq__answer">{item.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

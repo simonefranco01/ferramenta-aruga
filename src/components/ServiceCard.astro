@@ -1,0 +1,20 @@
+---
+import Icon from './Icon.astro';
+import type { Service } from '../data/services';
+import { url } from '../lib/url';
+
+interface Props { service: Service; delay?: number; headingLevel?: 'h3' | 'span' }
+const { service, delay = 0, headingLevel = 'h3' } = Astro.props;
+const Heading = headingLevel;
+---
+<a
+  href={url(service.path)}
+  class:list={['service-card', { 'service-card--inv': service.inverted }]}
+  data-rv="pop"
+  data-d={delay}
+>
+  <span class="service-card__icon"><Icon name={service.icon} size={32} /></span>
+  <Heading class="service-card__title">{service.title}</Heading>
+  <span class="service-card__text">{service.short}</span>
+  <span class="round-arrow"><Icon name="arrow" size={22} /></span>
+</a>

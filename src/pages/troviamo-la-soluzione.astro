@@ -1,0 +1,37 @@
+---
+import ServicePage from '../layouts/ServicePage.astro';
+import { site, waLink, waQuoteMessage } from '../lib/site';
+
+// Il pulsante WhatsApp compare solo se in site.json c'è un numero valido;
+// altrimenti la CTA porta al form.
+const wa = waLink(waQuoteMessage('Troviamo la soluzione'));
+const heroCta = wa
+  ? { href: wa, label: 'Mandaci una foto del problema', track: 'whatsapp', external: true }
+  : { href: '#preventivo', label: 'Raccontaci il problema', track: 'preventivo' };
+---
+<ServicePage
+  title="Non trovi il pezzo? Troviamo la soluzione a Torino | Ferramenta Aruga"
+  description="Ricambio introvabile? A Torino Santa Rita cerchiamo con te un'alternativa che funziona, anche con piccoli adattamenti. Consulenza al banco, preventivo gratuito."
+  service="troviamo-la-soluzione"
+  tag="Hai un problema? Troviamo la soluzione"
+  h1="Non trovi il pezzo? Portaci il problema."
+  lead="Quando il ricambio esatto non c'è, cerchiamo insieme un'alternativa che funziona. Consulenza al banco, anche per piccoli adattamenti."
+  photoLabel="il banco con un pezzo da sistemare"
+  heroCta={heroCta}
+  whatWeDo={[
+    'Consulenza al banco',
+    "Ricerca di un'alternativa quando il ricambio esatto non c'è",
+    'Piccoli adattamenti, per esempio sulle maniglie',
+    'Preventivo gratuito',
+  ]}
+  why={[
+    { kind: 'years', value: 2026 - site.foundingYear, label: 'anni nel quartiere' },
+    { kind: 'title', text: 'Nessun costo di uscita' },
+    { kind: 'title', text: 'Aperti anche il sabato' },
+    { kind: 'text', text: 'Porta il pezzo o una foto: ti diciamo se si può sistemare.' },
+  ]}
+  review={{
+    quote: 'Con ingegno e pazienza ha adattato il quadro della maniglia della mia finestra, ormai usurata, con il movimento di una maniglia nuova, ma che senza il suo intervento sarebbe stata inutilizzabile.',
+    author: 'Alessandrina R.',
+  }}
+/>

@@ -1,0 +1,9 @@
+---
+// Riquadro segnaposto per le foto ancora da fornire (elenco nel README).
+interface Props { label: string; ratio?: '43' | '54'; rv?: boolean; delay?: number }
+const { label, ratio = '43', rv = false, delay = 0 } = Astro.props;
+---
+<div class:list={['photo', `photo--${ratio}`]} data-rv={rv ? 'pop' : undefined} data-d={rv ? delay : undefined}>
+  <span class="ph-label" aria-hidden="true">FOTO: {label}</span>
+  <slot />
+</div>

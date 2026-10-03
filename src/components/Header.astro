@@ -1,0 +1,32 @@
+---
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import logoT from '../assets/logo-T.png';
+import logoResto from '../assets/logo-resto.png';
+import { telHref, phoneDisplay, waLink, waQuoteMessage } from '../lib/site';
+import { url } from '../lib/url';
+
+interface Props { ctaHref: string }
+const { ctaHref } = Astro.props;
+const wa = waLink(waQuoteMessage());
+---
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href={url('/')} class="logo-link" aria-label="Ferramenta Aruga, torna alla home">
+      <Image src={logoT} alt="" width={60} height={107} class="logo-t" data-rv="hammer" data-dur="1000" data-d="300" loading="eager" />
+      <Image src={logoResto} alt="Ferramenta Aruga dal 1986" width={500} height={108} class="logo-rest" loading="eager" />
+    </a>
+    <div class="header-actions">
+      {wa && (
+        <a href={wa} class="btn btn-white header-icon" aria-label="Scrivici su WhatsApp" data-track="whatsapp" data-track-where="header" target="_blank" rel="noopener">
+          <Icon name="whatsapp" size={22} />
+        </a>
+      )}
+      <a href={telHref} class="btn btn-white header-phone" aria-label={`Chiama lo ${phoneDisplay}`} data-track="chiama" data-track-where="header">
+        <Icon name="phone" size={20} />
+        <span class="desk-only">{phoneDisplay}</span>
+      </a>
+      <a href={ctaHref} class="btn btn-blue btn-shadow desk-only" data-track="preventivo" data-track-where="header">Chiedi preventivo</a>
+    </div>
+  </div>
+</header>
