@@ -1,6 +1,7 @@
 ---
 import ServicePage from '../layouts/ServicePage.astro';
 import { site } from '../lib/site';
+import foto from '../assets/serrature.webp';
 ---
 <ServicePage
   title="Cambio serratura e cilindro europeo a Torino Santa Rita | Ferramenta Aruga"
@@ -10,6 +11,9 @@ import { site } from '../lib/site';
   h1="Sicurezza per la tua porta, con la soluzione giusta."
   lead="Qualunque sia la tua serratura, ci pensiamo noi. Sostituzione di serrature di ogni tipo."
   photoLabel="serratura montata su una porta"
+  photo={foto}
+  photoAlt="Porta d'ingresso in legno: la porta vista dal pianerottolo, il cilindro europeo con le chiavi inserite e la sostituzione del cilindro"
+  illustrative
   situations={[
     { q: 'Ho ancora la chiave lunga a doppia mappa', a: 'La aggiorniamo a cilindro europeo' },
     { q: 'Ho perso le chiavi o ho appena traslocato', a: 'Cambiamo il cilindro' },

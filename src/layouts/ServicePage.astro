@@ -27,6 +27,11 @@ interface Props {
   photo?: ImageMetadata;
   photoAlt?: string;
   photoPosition?: string;
+  /** Dicitura "Immagine illustrativa" sulla foto. */
+  illustrative?: boolean;
+  /** Tondo di dettaglio in basso a destra. */
+  inset?: ImageMetadata;
+  insetAlt?: string;
   heroCta?: { href: string; label: string; track: string; external?: boolean };
   situations?: { q: string; a: string }[];
   whatWeDo: string[];
@@ -64,6 +69,9 @@ const heroCta = p.heroCta ?? { href: '#preventivo', label: 'Chiedi il preventivo
           src={p.photo}
           alt={p.photoAlt}
           position={p.photoPosition}
+          illustrative={p.illustrative}
+          inset={p.inset}
+          insetAlt={p.insetAlt}
           rv
           delay={150}
         />

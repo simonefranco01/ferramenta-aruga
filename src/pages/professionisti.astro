@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import QuoteForm from '../components/QuoteForm.astro';
 import PhotoPlaceholder from '../components/PhotoPlaceholder.astro';
 import Icon from '../components/Icon.astro';
+import foto from '../assets/professionisti.webp';
 import { url } from '../lib/url';
 ---
 <Base
@@ -20,7 +21,15 @@ import { url } from '../lib/url';
           <p class="lead" data-rv="up" data-d="120">Per decoratori, manutentori, imprese e strutture: vernici San Marco da rivenditore ufficiale, un ampio assortimento di ferramenta e materiale per la manutenzione. Aperti anche il sabato.</p>
           <a href="#preventivo" class="btn btn-blue btn-lg" data-rv="up" data-d="220" data-track="preventivo" data-track-where="hero">Parliamone <Icon name="arrow" size={20} /></a>
         </div>
-        <PhotoPlaceholder label="il negozio, scaffali e vernici" ratio="54" rv delay={150} />
+        <PhotoPlaceholder
+          label="il negozio, scaffali e vernici"
+          ratio="45"
+          src={foto}
+          alt="Il banco di una ferramenta con maniglie, viti e utensili, davanti agli scaffali con il materiale e un duplicatore di chiavi"
+          illustrative
+          rv
+          delay={150}
+        />
       </div>
     </div>
   </section>

@@ -45,20 +45,13 @@ Il form manda i dati a Formspree, che li inoltra all'email dell'attività: crea 
 `"staging": true` in `src/data/site.json`: ogni pagina ha `<meta name="robots" content="noindex, nofollow">` e `robots.txt` blocca tutto.
 Nota: sul sito in sottocartella (`/ferramenta-aruga/`) il file `robots.txt` non è alla radice del dominio e i crawler non lo leggono; la protezione effettiva in staging è il meta `noindex`.
 
-## Foto da sostituire
+## Foto
 
-I riquadri "FOTO: …" vanno sostituiti con foto reali (WebP o JPEG, lato lungo almeno il doppio della larghezza mostrata).
+Foto vere (del negozio): storia nella home (2 foto del team) e tintometro nella pagina Colori e vernici.
 
-| Pagina | Etichetta | Dimensioni consigliate |
-|---|---|---|
-| Home | FOTO: quattro generazioni | 1600×1200 (4:3) |
-| Serrature | FOTO: serratura montata su una porta | 1600×1280 (5:4) |
-| Colori e vernici | FOTO: tintometro e barattoli di vernice | 1600×1280 (5:4) |
-| Zanzariere e tende | FOTO: zanzariera montata su una finestra | 1600×1280 (5:4) |
-| Troviamo la soluzione | FOTO: il banco con un pezzo da sistemare | 1600×1280 (5:4) |
-| Professionisti | FOTO: il negozio, scaffali e vernici | 1600×1280 (5:4) |
+Immagini generate con IA, con la dicitura "Immagine illustrativa" sulla foto: Serrature, Zanzariere e tende, Troviamo la soluzione, Professionisti. Sono collage verticali 4:5. Quando ci sono foto vere del negozio, sostituisci il file in `src/assets/` (stesso nome: `serrature.webp`, `zanzariere.webp`, `troviamo.webp`, `professionisti.webp`) e togli la riga `illustrative` nella pagina corrispondente in `src/pages/`.
 
-Il riquadro è il componente `src/components/PhotoPlaceholder.astro`: per mettere la foto, inserisci un `<Image>` dentro lo slot e togli l'etichetta. Va usato un testo alternativo descrittivo.
+Il componente è `src/components/PhotoPlaceholder.astro`: senza `src` mostra il riquadro segnaposto "FOTO: …". Formato consigliato: verticale 4:5, almeno 1200×1500 px.
 
 ## Loghi
 

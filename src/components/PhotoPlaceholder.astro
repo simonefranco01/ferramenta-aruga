@@ -1,6 +1,8 @@
 ---
 // Foto con cornice del design. Senza `src` mostra il riquadro segnaposto "FOTO: …"
 // (elenco nel README); con `src` mostra la foto vera.
+// `illustrative` aggiunge la dicitura "Immagine illustrativa" (per immagini non scattate in negozio).
+// `inset` mette un tondo di dettaglio in basso a destra.
 import { Image } from 'astro:assets';
 
 interface Props {
@@ -11,18 +13,23 @@ interface Props {
   src?: ImageMetadata;
   alt?: string;
   position?: string;
+  illustrative?: boolean;
+  inset?: ImageMetadata;
+  insetAlt?: string;
 }
-const { label, ratio = '43', rv = false, delay = 0, src, alt = '', position = 'center' } = Astro.props;
+const { label, ratio = '43', rv = false, delay = 0, src, alt = '', position = 'center', illustrative = false, inset, insetAlt = '' } = Astro.props;
 ---
 <div
-  class:list={['photo', `photo--${ratio}`, { 'photo--img': !!src }]}
+  class:list={['photo', `photo--${ratio}`, { 'photo--img': !!src, 'photo--inset': !!inset }]}
   data-rv={rv ? 'pop' : undefined}
   data-d={rv ? delay : undefined}
 >
   {src ? (
-    <Image src={src} alt={alt} width={900} class="photo__img" style={`object-position:${position}`} widths={[480, 720, 900]} sizes="(max-width: 760px) 92vw, 560px" />
+    <Image src={src} alt={alt} width={900} class="photo__img" style={`object-position:${position}`} widths={[480, 720, 900]} sizes="(max-width: 760px) 92vw, 460px" />
   ) : (
     <span class="ph-label" aria-hidden="true">FOTO: {label}</span>
   )}
+  {src && illustrative && <span class="photo__caption">Immagine illustrativa</span>}
+  {inset && <Image src={inset} alt={insetAlt} width={320} height={320} class="photo__inset" loading="lazy" />}
   <slot />
 </div>
