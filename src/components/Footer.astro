@@ -24,7 +24,7 @@ import { url } from '../lib/url';
     <nav class="footer-col" aria-label="Servizi">
       <strong>Servizi</strong>
       {services.map((s) => <a href={url(s.path)}>{s.footerTitle}</a>)}
-      <a href={url('/professionisti/')}>Professionisti e strutture</a>
+      <a href={url('/professionisti/')}>Professionisti, imprese e strutture</a>
     </nav>
     <div class="footer-col">
       {socialLinks.length > 0 && (

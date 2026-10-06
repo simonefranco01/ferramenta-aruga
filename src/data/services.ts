@@ -17,23 +17,23 @@ export const services: Service[] = [
     path: '/serrature/',
     title: 'Serrature e cilindri',
     footerTitle: 'Serrature e cilindri',
-    short: 'Cambio cilindri e serrature, dalla doppia mappa alla porta blindata.',
+    short: 'Sostituiamo serrature e cilindri su porte blindate e tradizionali.',
     icon: 'key',
   },
   {
     slug: 'colori-vernici',
     path: '/colori-vernici/',
-    title: 'Colori e vernici su misura',
-    footerTitle: 'Colori e vernici su misura',
-    short: 'Il colore che vuoi, preparato al tintometro. Rivenditori ufficiali San Marco.',
+    title: 'Colori e vernici personalizzati',
+    footerTitle: 'Colori e vernici personalizzati',
+    short: 'Il colore che vuoi, preparato al momento grazie al nostro tintometro. Siamo rivenditori ufficiali San Marco.',
     icon: 'roller',
   },
   {
     slug: 'zanzariere-tende',
     path: '/zanzariere-tende/',
-    title: 'Zanzariere e tende su misura',
-    footerTitle: 'Zanzariere e tende su misura',
-    short: 'Prendiamo le misure a casa e montiamo noi.',
+    title: 'Zanzariere, binari balcone e sistemi per tende',
+    footerTitle: 'Zanzariere, binari balcone e tende',
+    short: 'Prendiamo le misure noi e ci affidiamo ai nostri artigiani per il montaggio.',
     icon: 'window',
   },
   {
@@ -50,7 +50,7 @@ export const services: Service[] = [
 /** Opzioni della select "Servizio" nel form. */
 export const formOptions = [
   ...services.map((s) => ({ value: s.slug, label: s.title })),
-  { value: 'professionisti', label: 'Per professionisti e strutture' },
+  { value: 'professionisti', label: 'Per professionisti, imprese e strutture' },
   { value: 'altro', label: 'Altra richiesta' },
 ];
 

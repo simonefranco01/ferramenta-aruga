@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
 import logoT from '../assets/logo-T.png';
 import logoResto from '../assets/logo-resto.png';
+import logoSanMarco from '../assets/logo-san-marco.png';
 import { telHref, phoneDisplay, waLink, waQuoteMessage } from '../lib/site';
 import { url } from '../lib/url';
 
@@ -12,10 +13,15 @@ const wa = waLink(waQuoteMessage());
 ---
 <header class="site-header">
   <div class="site-header__inner">
-    <a href={url('/')} class="logo-link" aria-label="Ferramenta Aruga, torna alla home">
-      <Image src={logoT} alt="" width={60} height={107} class="logo-t" data-rv="hammer" data-dur="1000" data-d="300" loading="eager" />
-      <Image src={logoResto} alt="Ferramenta Aruga dal 1986" width={500} height={108} class="logo-rest" loading="eager" />
-    </a>
+    <div class="brand">
+      <a href={url('/')} class="logo-link" aria-label="Ferramenta Aruga, torna alla home">
+        <Image src={logoT} alt="" width={60} height={107} class="logo-t" data-rv="hammer" data-dur="1000" data-d="300" loading="eager" />
+        <Image src={logoResto} alt="Ferramenta Aruga dal 1986" width={500} height={108} class="logo-rest" loading="eager" />
+      </a>
+      <span class="sm-badge">
+        <Image src={logoSanMarco} alt="San Marco, sistemi vernicianti per l'edilizia, rivenditori ufficiali" width={160} height={80} loading="eager" />
+      </span>
+    </div>
     <div class="header-actions">
       {wa && (
         <a href={wa} class="btn btn-white header-icon" aria-label="Scrivici su WhatsApp" data-track="whatsapp" data-track-where="header" target="_blank" rel="noopener">

@@ -35,7 +35,7 @@ Finché un valore non è valido, la funzione collegata resta spenta e **nessun l
 | `whatsapp` (numero con prefisso, es. `393331234567`) | Spariscono i pulsanti WhatsApp (header, form, `/grazie/`, `/troviamo-la-soluzione/`) e l'opzione di ricontatto WhatsApp. La CTA di `/troviamo-la-soluzione/` porta al form. |
 | `formEndpoint` (`https://formspree.io/f/xxxx`) | Il form non si invia: al posto del pulsante c'è "Per ora chiamaci allo 011 324 1363" con link `tel:`. |
 | `email` | Nessuna email mostrata, nessuna opzione di ricontatto via email, niente `email` nei dati strutturati. |
-| `founderName` | Si scrive "il nonno". |
+| `founderName` | Impostato ("Alfonso"). Se vuoto si scrive "il nonno". |
 | `social.facebook`, `social.instagram` | La colonna "Seguici" non compare nel footer. |
 
 Il form manda i dati a Formspree, che li inoltra all'email dell'attività: crea il form su formspree.io con quell'email e incolla l'endpoint.

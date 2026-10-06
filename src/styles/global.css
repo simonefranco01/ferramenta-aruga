@@ -118,6 +118,13 @@ summary::-webkit-details-marker { display: none; }
 .logo-link img { height: 100%; }
 .logo-link .logo-t { width: 10.81%; transform-origin: 45% 96%; }
 .logo-link .logo-rest { width: 89.19%; }
+.brand { display: flex; align-items: center; gap: clamp(8px, 1.6vw, 16px); min-width: 0; }
+.sm-badge {
+  flex: none; display: flex; align-items: center; background: #fff; border: 2.5px solid var(--ink);
+  border-radius: 10px; padding: 3px 6px; width: clamp(64px, 8vw, 92px);
+}
+.sm-badge img { width: 100%; height: auto; }
+@media (max-width: 400px) { .logo-link { width: 150px; } }
 .header-actions { display: flex; gap: 10px; align-items: center; }
 .header-phone { min-width: 48px; padding: 0 14px; font-weight: 700; }
 .header-icon { width: 48px; padding: 0; }
