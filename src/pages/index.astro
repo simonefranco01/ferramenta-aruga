@@ -4,10 +4,11 @@ import Base from '../layouts/Base.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import Steps from '../components/Steps.astro';
 import Review from '../components/Review.astro';
-import PhotoPlaceholder from '../components/PhotoPlaceholder.astro';
 import WhereWeAre from '../components/WhereWeAre.astro';
 import Icon from '../components/Icon.astro';
 import badge40 from '../assets/logo-40-anni.png';
+import storia1 from '../assets/storia-1.webp';
+import storia2 from '../assets/storia-2.webp';
 import { services } from '../data/services';
 import { site, founder, ratingDisplay } from '../lib/site';
 import { url } from '../lib/url';
@@ -17,13 +18,13 @@ const Founder = founder.charAt(0).toUpperCase() + founder.slice(1);
 ---
 <Base
   title="Ferramenta e colorificio a Torino Santa Rita dal 1986 | Ferramenta Aruga"
-  description="Ferramenta e colorificio San Marco in Via Barletta 55/B, Torino Santa Rita. Serrature e cilindri, colori e vernici personalizzati, zanzariere, binari balcone e sistemi per tende. Preventivo gratuito."
+  description="Ferramenta e colorificio San Marco in Via Barletta 55/B, Torino Santa Rita. Serrature, colori e vernici personalizzati, zanzariere e sistemi per tende, materiale idraulico ed elettrico, articoli per la casa. Preventivo gratuito."
   ctaHref="#servizi"
 >
   <section class="section bg-yellow">
     <div class="hero-home">
       <h1 class="h1-home" data-rv="up">Arrivi con un problema, esci con la soluzione.</h1>
-      <p class="lead" data-rv="up" data-d="120">Colori personalizzati, zanzariere, binari balcone e sistemi per tende: il lavoro lo facciamo noi grazie ai nostri artigiani di fiducia.</p>
+      <p class="lead" data-rv="up" data-d="120">Colori personalizzati, serrature, zanzariere e sistemi per tende. E non solo: materiale idraulico, elettrico e articoli per la casa. Tutto ciò che ti serve, in un unico posto.</p>
       <ul class="chips" data-rv="up" data-d="220">
         <li class="chip">★ {ratingDisplay} su Google · {site.rating.count} recensioni</li>
         <li class="chip">Aperti anche il sabato</li>
@@ -82,8 +83,9 @@ const Founder = founder.charAt(0).toUpperCase() + founder.slice(1);
       <div class="story">
         <h2 class="h2">La nostra storia: <span data-rv="count" data-to={years}>{years}</span> anni a Santa Rita</h2>
         <p>Nel 1986 {founder}, appassionato di “fai da te”, apre insieme ai figli il negozio di Via Barletta. Da allora, tre generazioni hanno portato avanti l'attività con passione, facendola crescere nel tempo.</p>
+        <p>Al nostro fianco c'è anche Sergio, una presenza preziosa che da oltre 30 anni fa parte della nostra famiglia lavorativa, contribuendo ogni giorno con esperienza, professionalità e dedizione.</p>
         <p>Oggi, con Vittorio, il negozio offre un'ampia scelta di prodotti e servizi: ferramenta, colorificio con tintometria San Marco, duplicazione chiavi, affilatura, casalinghi, materiale elettrico e idraulico, prodotti Nuncas e detersivi alla spina.</p>
-        <p>Una storia di famiglia che continua, mantenendo sempre al centro qualità, disponibilità e cura del cliente.</p>
+        <p>Una storia di famiglia che continua da 40 anni, fatta di persone, passione e fiducia, mantenendo sempre al centro qualità, disponibilità e cura del cliente.</p>
         <div class="timeline-wrap">
         <span class="timeline__track" aria-hidden="true"></span>
         <span class="timeline__fill" aria-hidden="true" data-rv="fill" data-dur="2600"></span>
@@ -106,9 +108,15 @@ const Founder = founder.charAt(0).toUpperCase() + founder.slice(1);
         </ol>
         </div>
       </div>
-      <PhotoPlaceholder label="quattro generazioni">
+      <div class="photo-pair" data-rv="pop" data-d="150">
+        <figure class="photo-pair__item">
+          <Image src={storia1} width={720} height={900} alt="Tre persone del team di Ferramenta Aruga in negozio, con le felpe blu San Marco" widths={[360, 540, 720]} sizes="(max-width: 760px) 46vw, 280px" />
+        </figure>
+        <figure class="photo-pair__item">
+          <Image src={storia2} width={720} height={900} alt="Tre persone del team in negozio: al centro, di spalle, la felpa con il logo Ferramenta Aruga e San Marco" widths={[360, 540, 720]} sizes="(max-width: 760px) 46vw, 280px" />
+        </figure>
         <Image src={badge40} alt="Logo 40 anni di attività, Ferramenta Aruga" width={380} height={380} class="badge-40" data-rv="pop" data-d="200" />
-      </PhotoPlaceholder>
+      </div>
     </div>
   </section>
 

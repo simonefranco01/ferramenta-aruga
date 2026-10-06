@@ -23,6 +23,10 @@ interface Props {
   h1: string;
   lead: string;
   photoLabel: string;
+  /** Foto vera (verticale 4:5). Se manca resta il riquadro segnaposto. */
+  photo?: ImageMetadata;
+  photoAlt?: string;
+  photoPosition?: string;
   heroCta?: { href: string; label: string; track: string; external?: boolean };
   situations?: { q: string; a: string }[];
   whatWeDo: string[];
@@ -54,7 +58,15 @@ const heroCta = p.heroCta ?? { href: '#preventivo', label: 'Chiedi il preventivo
           >{heroCta.label} <Icon name="arrow" size={20} /></a>
           <slot name="hero-extra" />
         </div>
-        <PhotoPlaceholder label={p.photoLabel} ratio="54" rv delay={150} />
+        <PhotoPlaceholder
+          label={p.photoLabel}
+          ratio={p.photo ? '45' : '54'}
+          src={p.photo}
+          alt={p.photoAlt}
+          position={p.photoPosition}
+          rv
+          delay={150}
+        />
       </div>
     </div>
   </section>
