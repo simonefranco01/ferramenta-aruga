@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, email, telHref, phoneDisplay } from '../lib/site';
+import { url } from '../lib/url';
+---
+<Base
+  title="Cookie policy | Ferramenta Aruga"
+  description="Quali cookie e contenuti esterni usa il sito di Ferramenta Aruga, a cosa servono e come cambiare la tua scelta in qualsiasi momento."
+>
+  <section class="section bg-cream">
+    <div class="container-narrow pad-y">
+      <h1 class="h1-service" style="font-size:clamp(38px,5vw,64px);margin-bottom:28px">Cookie policy</h1>
+      <div class="prose">
+        <p>Questa pagina spiega come questo sito usa i cookie e i contenuti di servizi esterni. Per i dati personali che ci invii con il modulo, vedi l'<a href={url('/privacy/')}>informativa privacy</a>.</p>
+
+        <h2>Titolare</h2>
+        <p>{site.legalName}, {site.address.street}, {site.address.city}. Telefono: <a href={telHref}>{phoneDisplay}</a>{email && <>. Email: <a href={`mailto:${email}`}>{email}</a></>}.</p>
+
+        <h2>Cosa sono i cookie</h2>
+        <p>I cookie sono piccoli file che un sito salva nel tuo browser. Servono, per esempio, a ricordare le tue scelte o, nel caso dei cookie di profilazione, a seguire la tua navigazione.</p>
+
+        <h2>Cosa usa questo sito</h2>
+        <ul>
+          <li><strong>Cookie di profilazione e di analisi:</strong> nessuno. Il sito non traccia la tua navigazione e non usa strumenti di statistica.</li>
+          <li><strong>Memoria tecnica del browser:</strong> salviamo solo la tua scelta sul pop-up dei cookie (accetta tutti o solo necessari), per non chiedertela a ogni pagina. Non è un cookie di tracciamento e non contiene dati personali.</li>
+          <li><strong>Google Maps (terza parte):</strong> la mappa nella sezione "Dove siamo" è un contenuto di Google. Viene caricata solo se accetti, oppure se clicchi "Mostra la mappa". In quel caso Google può impostare propri cookie e raccogliere dati, secondo la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">sua informativa</a>.</li>
+          <li><strong>Collegamenti esterni:</strong> i pulsanti per aprire Google Maps o WhatsApp portano a servizi esterni, con le loro informative. Non vengono caricati finché non li clicchi.</li>
+        </ul>
+
+        <h2>Come cambiare la tua scelta</h2>
+        <p>Puoi cambiare scelta quando vuoi: clicca "Preferenze cookie" in fondo a ogni pagina, oppure il pulsante qui sotto. Puoi anche cancellare i dati del sito dalle impostazioni del tuo browser.</p>
+        <p><button type="button" class="btn btn-blue btn-shadow" data-cookie-prefs>Apri le preferenze cookie</button></p>
+
+        <h2>Aggiornamenti</h2>
+        <p>Se in futuro il sito userà strumenti di analisi o altri servizi che usano cookie, aggiorneremo questa pagina e ti chiederemo di nuovo il consenso.</p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  import { openConsentBanner } from '../scripts/consent';
+  document.querySelectorAll('main [data-cookie-prefs]').forEach((b) => b.addEventListener('click', openConsentBanner));
+</script>

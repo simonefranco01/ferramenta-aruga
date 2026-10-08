@@ -1,11 +1,15 @@
 ---
-// "Dove siamo e orari". Niente iframe di Google Maps (imposta cookie): riquadro con pulsante.
+// "Dove siamo e orari". La mappa di Google Maps si carica solo con il consenso (pop-up cookie)
+// o con un clic su "Mostra la mappa": così non vengono impostati cookie di terze parti prima della scelta.
 import Icon from './Icon.astro';
 import { site, telHref, phoneDisplay, email } from '../lib/site';
 
 interface Props { headingLevel?: 'h1' | 'h2'; title?: string }
 const { headingLevel = 'h2', title = 'Dove siamo e orari' } = Astro.props;
 const Heading = headingLevel;
+
+const query = `${site.address.street}, ${site.address.city}`;
+const embedSrc = `https://www.google.com/maps?q=${encodeURIComponent(query)}&hl=it&z=17&output=embed`;
 ---
 <section class="section bg-cream" aria-labelledby="dove-title">
   <div class="container pad-y where">
@@ -40,11 +44,58 @@ const Heading = headingLevel;
         <a href={telHref} class="btn btn-blue btn-shadow" style="min-height:52px" data-track="chiama" data-track-where="dove-siamo">Chiama</a>
       </div>
     </div>
-    <div class="map-box">
-      <span class="map-pin" aria-hidden="true"><Icon name="pin" size={30} /></span>
-      <span class="map-box__addr">{site.address.street}, {site.address.city}</span>
-      <a href={site.mapsUrl} class="btn btn-white btn-shadow" style="min-height:52px" target="_blank" rel="noopener">Apri in Google Maps</a>
-      <p class="map-box__note">La mappa si apre su Google Maps, in una nuova scheda.</p>
+
+    <div class="map-box" data-map data-src={embedSrc} data-title={`Mappa: Ferramenta Aruga, ${query}`}>
+      <div class="map-ph" data-map-ph>
+        <span class="map-pin" aria-hidden="true"><Icon name="pin" size={30} /></span>
+        <span class="map-box__addr">{query}</span>
+        <div class="btn-row" style="justify-content:center">
+          <button type="button" class="btn btn-blue btn-shadow" style="min-height:52px" data-map-load>Mostra la mappa</button>
+          <a href={site.mapsUrl} class="btn btn-white btn-shadow" style="min-height:52px" target="_blank" rel="noopener">Apri in Google Maps</a>
+        </div>
+        <p class="map-box__note">La mappa è di Google Maps e usa cookie di terze parti: la mostriamo solo se lo accetti. <a href="#" data-cookie-prefs>Preferenze cookie</a></p>
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+  import { getConsent, openConsentBanner } from '../scripts/consent';
+
+  document.querySelectorAll<HTMLElement>('[data-map]').forEach((box) => {
+    const ph = box.querySelector<HTMLElement>('[data-map-ph]')!;
+    let frame: HTMLIFrameElement | null = null;
+
+    const showMap = () => {
+      if (frame) return;
+      frame = document.createElement('iframe');
+      frame.src = box.dataset.src || '';
+      frame.title = box.dataset.title || 'Mappa';
+      frame.loading = 'lazy';
+      frame.referrerPolicy = 'no-referrer-when-downgrade';
+      frame.className = 'map-frame';
+      frame.setAttribute('allowfullscreen', '');
+      ph.hidden = true;
+      box.classList.add('map-box--live');
+      box.appendChild(frame);
+    };
+    const hideMap = () => {
+      frame?.remove();
+      frame = null;
+      ph.hidden = false;
+      box.classList.remove('map-box--live');
+    };
+
+    if (getConsent() === 'all') showMap();
+    box.querySelector('[data-map-load]')?.addEventListener('click', showMap);
+    box.querySelector('[data-cookie-prefs]')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      openConsentBanner();
+    });
+    window.addEventListener('aruga:consent', (e) => {
+      const v = (e as CustomEvent<string>).detail;
+      if (v === 'all') showMap();
+      else hideMap();
+    });
+  });
+</script>

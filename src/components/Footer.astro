@@ -36,7 +36,13 @@ import { url } from '../lib/url';
       {socialLinks.length === 0 && <strong>Informazioni</strong>}
       <a href={url('/contatti/')}>Contatti</a>
       <a href={url('/privacy/')}>Privacy</a>
+      <a href={url('/cookie-policy/')}>Cookie policy</a>
+      <button type="button" class="link-btn" data-cookie-prefs>Preferenze cookie</button>
     </div>
   </div>
   <div class="footer-bottom">© {site.name} · dal {site.foundingYear} · {site.legalName}</div>
 </footer>
+<script>
+  import { openConsentBanner } from '../scripts/consent';
+  document.querySelectorAll('.site-footer [data-cookie-prefs]').forEach((b) => b.addEventListener('click', openConsentBanner));
+</script>

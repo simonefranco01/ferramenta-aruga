@@ -109,15 +109,9 @@ const prefs = [
         <p id="qf-privacy-err" class="field-error" hidden></p>
       </div>
 
-      {formEndpoint ? (
-        <>
-          <button type="submit" class="submit">Invia la richiesta</button>
-          <p class="form-status" role="status" aria-live="polite" data-form-status></p>
-          <p class="form-note">Preferisci parlare con noi? <a href={telHref} style="font-weight:800" data-track="chiama" data-track-where="form">Chiama lo {phoneDisplay}</a></p>
-        </>
-      ) : (
-        <a href={telHref} class="form-fallback" data-track="chiama" data-track-where="form">Per ora chiamaci allo {phoneDisplay}</a>
-      )}
+      <button type="submit" class="submit">Invia</button>
+      <p class="form-status" role="status" aria-live="polite" data-form-status></p>
+      <p class="form-note">Preferisci parlare con noi? <a href={telHref} style="font-weight:800" data-track="chiama" data-track-where="form">Chiama lo {phoneDisplay}</a></p>
     </form>
   </div>
 </section>
@@ -134,6 +128,7 @@ const prefs = [
     messaggio: 'Descrivi in breve il problema.',
     privacy: "Per inviare la richiesta devi accettare l'informativa privacy.",
     invio: 'Invio in corso…',
+    nonAttivo: 'Il modulo non è ancora attivo. Per ora chiamaci allo 011 324 1363.',
     errore: 'Non siamo riusciti a inviare la richiesta. Riprova tra poco oppure chiamaci allo 011 324 1363.',
   };
 
@@ -217,11 +212,15 @@ const prefs = [
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      if (!endpoint) return; // Endpoint non impostato: nessun invio.
       tried = true;
       const firstInvalid = validate();
       if (firstInvalid) {
         firstInvalid.focus();
+        return;
+      }
+      if (!endpoint) {
+        // Endpoint Formspree non ancora impostato in site.json: nessun invio, ma l'utente lo sa.
+        if (status) { status.className = 'form-status form-status--error'; status.textContent = MSG.nonAttivo; }
         return;
       }
       const hp = form.elements.namedItem('_gotcha') as HTMLInputElement | null;

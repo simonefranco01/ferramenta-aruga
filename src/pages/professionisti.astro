@@ -1,14 +1,16 @@
 ---
+import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import QuoteForm from '../components/QuoteForm.astro';
-import PhotoPlaceholder from '../components/PhotoPlaceholder.astro';
 import Icon from '../components/Icon.astro';
-import foto from '../assets/professionisti.webp';
+import negozio from '../assets/professionisti-negozio.webp';
+import colori from '../assets/professionisti-colori.webp';
+import upower from '../assets/upower.webp';
 import { url } from '../lib/url';
 ---
 <Base
-  title="Vernici San Marco e ferramenta per professionisti a Torino | Ferramenta Aruga"
-  description="Per decoratori, manutentori, imprese e strutture a Torino: vernici San Marco da rivenditore ufficiale, ampio assortimento di ferramenta e materiale per la manutenzione. Aperti anche il sabato."
+  title="Vernici San Marco, ferramenta e antinfortunistica per professionisti a Torino | Ferramenta Aruga"
+  description="Per decoratori, manutentori, imprese e strutture a Torino: vernici San Marco da rivenditore ufficiale, ferramenta, materiale per la manutenzione e antinfortunistica U-Power. Aperti anche il sabato."
   ctaHref="#preventivo"
 >
   <section class="section bg-yellow">
@@ -21,15 +23,14 @@ import { url } from '../lib/url';
           <p class="lead" data-rv="up" data-d="120">Per decoratori, manutentori, imprese e strutture: vernici San Marco da rivenditore ufficiale, un ampio assortimento di ferramenta e materiale per la manutenzione. Aperti anche il sabato.</p>
           <a href="#preventivo" class="btn btn-blue btn-lg" data-rv="up" data-d="220" data-track="preventivo" data-track-where="hero">Parliamone <Icon name="arrow" size={20} /></a>
         </div>
-        <PhotoPlaceholder
-          label="il negozio, scaffali e vernici"
-          ratio="45"
-          src={foto}
-          alt="Il banco di una ferramenta con maniglie, viti e utensili, davanti agli scaffali con il materiale e un duplicatore di chiavi"
-          illustrative
-          rv
-          delay={150}
-        />
+        <div class="photo-stack" data-rv="pop" data-d="150">
+          <figure class="photo-stack__item">
+            <Image src={negozio} alt="L'angolo del negozio Ferramenta Aruga tra Via Barletta e Via Gradisca, con le insegne gialle Elettricità, Idraulica, Colori San Marco e Casalinghi" width={720} height={540} widths={[360, 540, 720]} sizes="(max-width: 760px) 92vw, 460px" loading="eager" />
+          </figure>
+          <figure class="photo-stack__item">
+            <Image src={colori} alt="Secchi di vernice San Marco e cartelle colori esposte in negozio" width={720} height={720} widths={[360, 540, 720]} sizes="(max-width: 760px) 92vw, 460px" style="object-position:50% 30%" />
+          </figure>
+        </div>
       </div>
     </div>
   </section>
@@ -42,6 +43,20 @@ import { url } from '../lib/url';
         <li class="list-card" data-rv="pop" data-d="80"><h3>Ferramenta e manutenzione</h3><p>Un ampio assortimento di ferramenta e materiale per la manutenzione, anche elettrico e idraulico.</p></li>
         <li class="list-card" data-rv="pop" data-d="160"><h3>Aperti anche il sabato</h3><p>Dal lunedì al sabato, 9:00–12:15 e 15:15–19:15.</p></li>
       </ul>
+    </div>
+  </section>
+
+  <section class="section bg-blue on-dark" aria-labelledby="upower-title">
+    <div class="container pad-y promo">
+      <div class="promo__text">
+        <span class="eyebrow">Antinfortunistica</span>
+        <h2 id="upower-title" class="h2" data-rv="up">La tua sicurezza è <span class="nowrap">U-Power</span></h2>
+        <p data-rv="up" data-d="100">In negozio trovi anche l'antinfortunistica <span class="nowrap">U-Power</span>: dispositivi di protezione individuale, scarpe da lavoro, giubbotti e molto altro.</p>
+        <a href="#preventivo" class="btn btn-yellow btn-lg" data-rv="up" data-d="200" data-track="preventivo" data-track-where="upower">Chiedici cosa ti serve <Icon name="arrow" size={20} /></a>
+      </div>
+      <figure class="promo__img" data-rv="pop" data-d="150">
+        <Image src={upower} alt="Locandina U-Power: giubbotti, scarpe da lavoro e guanti protettivi, con la scritta «La tua sicurezza è U-Power, disponibile ora da Ferramenta Aruga»" width={572} height={1024} widths={[320, 572]} sizes="(max-width: 760px) 70vw, 320px" />
+      </figure>
     </div>
   </section>
 

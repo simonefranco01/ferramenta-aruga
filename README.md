@@ -33,7 +33,7 @@ Finché un valore non è valido, la funzione collegata resta spenta e **nessun l
 | Campo | Cosa succede finché manca |
 |---|---|
 | `whatsapp` (numero con prefisso, es. `393331234567`) | Spariscono i pulsanti WhatsApp (header, form, `/grazie/`, `/troviamo-la-soluzione/`) e l'opzione di ricontatto WhatsApp. La CTA di `/troviamo-la-soluzione/` porta al form. |
-| `formEndpoint` (`https://formspree.io/f/xxxx`) | Il form non si invia: al posto del pulsante c'è "Per ora chiamaci allo 011 324 1363" con link `tel:`. |
+| `formEndpoint` (`https://formspree.io/f/xxxx`) | Il pulsante "Invia" controlla i campi ma non spedisce: mostra "Il modulo non è ancora attivo. Per ora chiamaci allo 011 324 1363." **Va impostato prima della messa online definitiva.** |
 | `email` | Nessuna email mostrata, nessuna opzione di ricontatto via email, niente `email` nei dati strutturati. |
 | `founderName` | Impostato ("Alfonso"). Se vuoto si scrive "il nonno". |
 | `social.facebook`, `social.instagram` | La colonna "Seguici" non compare nel footer. |
@@ -47,15 +47,21 @@ Nota: sul sito in sottocartella (`/ferramenta-aruga/`) il file `robots.txt` non 
 
 ## Foto
 
-Foto vere (del negozio): storia nella home (2 foto del team) e tintometro nella pagina Colori e vernici.
+Foto vere (del negozio): storia nella home (2 foto del team), tintometro nella pagina Colori e vernici, negozio e colori San Marco nella pagina Professionisti. In più la locandina U-Power (generata con IA) nel blocco antinfortunistica di Professionisti.
 
-Immagini generate con IA, con la dicitura "Immagine illustrativa" sulla foto: Serrature, Zanzariere e tende, Troviamo la soluzione, Professionisti. Sono collage verticali 4:5. Quando ci sono foto vere del negozio, sostituisci il file in `src/assets/` (stesso nome: `serrature.webp`, `zanzariere.webp`, `troviamo.webp`, `professionisti.webp`) e togli la riga `illustrative` nella pagina corrispondente in `src/pages/`.
+Immagini generate con IA, con la dicitura "Immagine illustrativa" sulla foto: Serrature, Zanzariere e tende, Troviamo la soluzione. Sono collage verticali 4:5. Quando ci sono foto vere del negozio, sostituisci il file in `src/assets/` (stesso nome: `serrature.webp`, `zanzariere.webp`, `troviamo.webp`) e togli la riga `illustrative` nella pagina corrispondente in `src/pages/`.
 
 Il componente è `src/components/PhotoPlaceholder.astro`: senza `src` mostra il riquadro segnaposto "FOTO: …". Formato consigliato: verticale 4:5, almeno 1200×1500 px.
 
 ## Loghi
 
 I loghi in `src/assets/` sono ritagliati da un JPEG. **Serve il vettoriale originale (SVG/AI)** per sostituirli e rifare la divisione T/resto per l'animazione del martello. Favicon e immagine Open Graph si rigenerano con `npm run icons`.
+
+## Cookie e mappa
+
+Il pop-up cookie (`src/components/CookieBanner.astro`) salva la scelta in `localStorage` (chiave `aruga-cookie-consent`). La mappa di Google Maps in "Dove siamo" si carica solo con "Accetta tutti" o dopo il clic su "Mostra la mappa". Il link "Preferenze cookie" nel footer riapre il pop-up. Se in futuro si aggiungono strumenti di analisi o altri servizi con cookie, vanno collegati allo stesso consenso (`src/scripts/consent.ts`).
+
+La pagina `/cookie-policy/` e `/privacy/` sono testi base: **vanno verificati dal titolare**.
 
 ## Privacy
 

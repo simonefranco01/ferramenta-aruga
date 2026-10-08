@@ -1,0 +1,45 @@
+---
+import { url } from '../lib/url';
+---
+<div id="cookie-banner" class="cookie" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-desc" hidden>
+  <div class="cookie__inner">
+    <h2 id="cookie-title" class="cookie__title">Cookie e contenuti esterni</h2>
+    <p id="cookie-desc" class="cookie__text">
+      Il sito non usa cookie di profilazione. Se accetti, mostriamo la mappa di Google Maps, che può usare cookie di terze parti.
+      Puoi cambiare scelta in qualsiasi momento. <a href={url('/cookie-policy/')}>Cookie policy</a>
+    </p>
+    <div class="cookie__actions">
+      <button type="button" class="btn btn-white" data-consent="necessary">Solo necessari</button>
+      <button type="button" class="btn btn-blue" data-consent="all">Accetta tutti</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { getConsent, setConsent, type Consent } from '../scripts/consent';
+
+  const banner = document.getElementById('cookie-banner');
+  if (banner) {
+    const show = (focus: boolean) => {
+      banner.hidden = false;
+      if (focus) banner.querySelector<HTMLButtonElement>('[data-consent="all"]')?.focus();
+    };
+    const hide = () => { banner.hidden = true; };
+
+    // Primo accesso: mostra il pop-up. Se ha già scelto, resta nascosto.
+    if (!getConsent()) show(false);
+
+    banner.querySelectorAll<HTMLButtonElement>('[data-consent]').forEach((b) =>
+      b.addEventListener('click', () => {
+        setConsent(b.dataset.consent as Consent);
+        hide();
+      }),
+    );
+
+    // Riapertura dal footer
+    window.addEventListener('aruga:open-consent', () => show(true));
+    banner.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && getConsent()) hide();
+    });
+  }
+</script>

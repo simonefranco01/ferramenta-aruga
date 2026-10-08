@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { site, email, telHref, phoneDisplay } from '../lib/site';
+import { url } from '../lib/url';
 ---
 <Base
   title="Informativa privacy | Ferramenta Aruga"
@@ -27,8 +28,8 @@ import { site, email, telHref, phoneDisplay } from '../lib/site';
         <h2>Quanto conserviamo i dati</h2>
         <p>Per il tempo necessario a rispondere e a gestire il preventivo; poi li cancelliamo, salvo obblighi di legge.</p>
 
-        <h2>Cookie</h2>
-        <p>Il sito non usa cookie di profilazione e non ha strumenti di analisi attivi. Per questo non mostriamo il banner dei cookie. I pulsanti che aprono Google Maps o WhatsApp portano a servizi esterni, con le loro informative.</p>
+        <h2>Cookie e servizi esterni</h2>
+        <p>Il sito non usa cookie di profilazione e non ha strumenti di analisi attivi. La mappa è di Google Maps e viene caricata solo se accetti i contenuti esterni nel pop-up dei cookie (o se clicchi "Mostra la mappa"): in quel caso Google può usare cookie di terze parti. I pulsanti che aprono Google Maps o WhatsApp portano a servizi esterni, con le loro informative. Dettagli nella <a href={url('/cookie-policy/')}>cookie policy</a>.</p>
 
         <h2>I tuoi diritti</h2>
         <p>Puoi chiederci in ogni momento di accedere ai tuoi dati, correggerli, cancellarli, limitarne l'uso o opporti al trattamento, e puoi revocare il consenso. Scrivici o chiamaci ai recapiti qui sopra. Hai anche il diritto di presentare reclamo al Garante per la protezione dei dati personali (garanteprivacy.it).</p>
