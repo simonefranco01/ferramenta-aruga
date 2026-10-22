@@ -6,7 +6,7 @@
 import Icon from './Icon.astro';
 import { formOptions, serviceLabel } from '../data/services';
 import { formEndpoint, whatsappNumber, email, telHref, phoneDisplay, waLink, waQuoteMessage } from '../lib/site';
-import { url } from '../lib/url';
+import { url, absoluteUrl } from '../lib/url';
 
 interface Props {
   service?: string;
@@ -42,6 +42,7 @@ const prefs = [
       method="post"
       novalidate
     >
+      <input type="hidden" name="_next" value={absoluteUrl('/grazie/', Astro.site)} />
       <input type="hidden" name="_subject" value="Nuova richiesta dal sito Ferramenta Aruga" />
       <div class="hp" aria-hidden="true">
         <label>Non compilare questo campo <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></label>

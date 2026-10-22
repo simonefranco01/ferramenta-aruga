@@ -1,5 +1,6 @@
 {
   "staging": true,
+  "url": "https://ferramentaaruga.it",
 
   "name": "Ferramenta Aruga",
   "googleName": "Colorificio San Marco Ferramenta Aruga Torino",
@@ -25,6 +26,7 @@
   "whatsapp": "[DA INSERIRE: numero con prefisso internazionale, es. 393331234567]",
   "email": "[DA INSERIRE]",
   "formEndpoint": "https://formspree.io/f/moeearjg",
+
   "hours": {
     "days": "Lunedì–sabato",
     "daysShort": "Lun–sab",

@@ -7,7 +7,7 @@ Il design è la direzione "A – Insegna" (specifiche in `HANDOFF-DESIGN.md`, so
 
 ```bash
 npm install
-npm run dev       # sviluppo su http://localhost:4321/ferramenta-aruga/
+npm run dev       # sviluppo su http://localhost:4321/
 npm run build     # sito in dist/
 npm run preview   # prova della build
 npm run icons     # rigenera favicon, logo JSON-LD e immagine Open Graph dai loghi
@@ -43,7 +43,7 @@ Il form manda i dati a Formspree, che li inoltra all'email dell'attività: crea 
 ## Modalità staging
 
 `"staging": true` in `src/data/site.json`: ogni pagina ha `<meta name="robots" content="noindex, nofollow">` e `robots.txt` blocca tutto.
-Nota: sul sito in sottocartella (`/ferramenta-aruga/`) il file `robots.txt` non è alla radice del dominio e i crawler non lo leggono; la protezione effettiva in staging è il meta `noindex`.
+Con il dominio proprio (`ferramentaaruga.it`) `robots.txt` è alla radice e viene letto dai crawler; in più ogni pagina ha il meta `noindex`.
 
 ## Foto
 
@@ -70,9 +70,9 @@ La pagina `/cookie-policy/` e `/privacy/` sono testi base: **vanno verificati da
 ## Pubblicazione
 
 Ogni push su `main` fa il deploy su GitHub Pages con il workflow `.github/workflows/deploy.yml`.
-All'inizio il sito è in sottocartella (`/ferramenta-aruga/`).
+Il sito è sul dominio **ferramentaaruga.it** (`site` e `base` in `astro.config.mjs`, file `public/CNAME`, chiave `url` in `site.json`). Finché `staging` è `true` resta `noindex`.
 
-## Passaggio al dominio della ferramenta
+## Passaggio al dominio della ferramenta (già fatto per ferramentaaruga.it)
 
 1. In `astro.config.mjs` imposta `SITE` con il nuovo dominio (es. `https://www.dominio.it`) e `BASE` a `'/'`.
 2. Crea `public/CNAME` con una sola riga: il dominio (es. `www.dominio.it`).

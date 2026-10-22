@@ -1,6 +1,6 @@
 // Helper per il base path: tutti i link interni e le immagini in public/ passano da qui.
-// Con base "/ferramenta-aruga" → url('/serrature/') = '/ferramenta-aruga/serrature/'.
-// Con base "/" → url('/serrature/') = '/serrature/'.
+// Con base "/" (dominio proprio) → url('/serrature/') = '/serrature/'.
+// Con una sottocartella, es. base "/sito" → url('/serrature/') = '/sito/serrature/'.
 const base = import.meta.env.BASE_URL.replace(/\/+$/, '');
 
 export function url(path = '/'): string {
