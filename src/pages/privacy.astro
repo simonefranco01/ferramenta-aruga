@@ -14,7 +14,7 @@ import { url } from '../lib/url';
         <p>Questa informativa spiega come trattiamo i dati personali che ci invii compilando il modulo di richiesta preventivo di questo sito.</p>
 
         <h2>Titolare del trattamento</h2>
-        <p>{site.legalName}, {site.address.street}, {site.address.city}. Telefono: <a href={telHref}>{phoneDisplay}</a>{email && <>. Email: <a href={`mailto:${email}`}>{email}</a></>}.</p>
+        <p>{site.legalName}, {site.address.street}, {site.address.city}. P.IVA {site.vatId}. Telefono: <a href={telHref}>{phoneDisplay}</a>{email && <>. Email: <a href={`mailto:${email}`}>{email}</a></>}.</p>
 
         <h2>Quali dati raccogliamo</h2>
         <p>Solo quelli che inserisci nel modulo: nome, numero di telefono, descrizione del problema, servizio scelto, modo in cui preferisci essere ricontattato e, se lo indichi, l'indirizzo email. Se ci scrivi su WhatsApp, vale anche l'informativa di quel servizio.</p>

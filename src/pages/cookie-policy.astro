@@ -14,7 +14,7 @@ import { url } from '../lib/url';
         <p>Questa pagina spiega come questo sito usa i cookie e i contenuti di servizi esterni. Per i dati personali che ci invii con il modulo, vedi l'<a href={url('/privacy/')}>informativa privacy</a>.</p>
 
         <h2>Titolare</h2>
-        <p>{site.legalName}, {site.address.street}, {site.address.city}. Telefono: <a href={telHref}>{phoneDisplay}</a>{email && <>. Email: <a href={`mailto:${email}`}>{email}</a></>}.</p>
+        <p>{site.legalName}, {site.address.street}, {site.address.city}. P.IVA {site.vatId}. Telefono: <a href={telHref}>{phoneDisplay}</a>{email && <>. Email: <a href={`mailto:${email}`}>{email}</a></>}.</p>
 
         <h2>Cosa sono i cookie</h2>
         <p>I cookie sono piccoli file che un sito salva nel tuo browser. Servono, per esempio, a ricordare le tue scelte o, nel caso dei cookie di profilazione, a seguire la tua navigazione.</p>
