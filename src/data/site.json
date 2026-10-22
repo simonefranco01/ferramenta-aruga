@@ -24,8 +24,7 @@
   },
   "whatsapp": "[DA INSERIRE: numero con prefisso internazionale, es. 393331234567]",
   "email": "[DA INSERIRE]",
-  "formEndpoint": "[DA INSERIRE: https://formspree.io/f/xxxxxxx]",
-
+  "formEndpoint": "https://formspree.io/f/moeearjg",
   "hours": {
     "days": "Lunedì–sabato",
     "daysShort": "Lun–sab",
