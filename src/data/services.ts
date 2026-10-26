@@ -47,10 +47,18 @@ export const services: Service[] = [
   },
 ];
 
+const FORM_LABELS: Record<string, string> = {
+  serrature: 'Serrature e cilindri',
+  'colori-vernici': 'Colori e vernici',
+  'zanzariere-tende': 'Zanzariere e tende',
+  'troviamo-la-soluzione': 'Troviamo la soluzione'
+};
+
 /** Opzioni della select "Servizio" nel form. */
 export const formOptions = [
-  ...services.map((s) => ({ value: s.slug, label: s.title })),
-  { value: 'professionisti', label: 'Per professionisti, imprese e strutture' },
+  // Voci brevi: nel menu del modulo (anche su iPhone) devono stare su una riga.
+  ...services.map((s) => ({ value: s.slug, label: FORM_LABELS[s.slug] ?? s.title })),
+  { value: 'professionisti', label: 'Professionisti e imprese' },
   { value: 'altro', label: 'Altra richiesta' },
 ];
 

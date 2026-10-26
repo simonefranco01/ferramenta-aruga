@@ -388,15 +388,26 @@ summary::-webkit-details-marker { display: none; }
   display: flex; flex-direction: column; gap: 18px; padding: clamp(20px, 3vw, 32px);
   background: #fff; border: var(--border); border-radius: 20px; box-shadow: 8px 8px 0 var(--ink);
 }
-.field { display: flex; flex-direction: column; gap: 6px; }
+.field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
 .field > label, .legend { font-weight: 800; }
 .optional { font-weight: 500; }
 .field-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 18px; }
 .input {
   min-height: 56px; padding: 0 14px; font: inherit; color: var(--ink);
   border: var(--border); border-radius: 12px; background: #fff; width: 100%;
+  min-width: 0; max-width: 100%; /* Safari: i controlli non devono allargare la pagina */
 }
-select.input { font-weight: 600; background: var(--cream); }
+select.input {
+  /* Safari: senza questo il testo interno del menu esce dalla scatola e allarga tutta la pagina.
+     Il selettore nativo dell'iPhone si apre comunque; la freccia e' disegnata qui. */
+  -webkit-appearance: none; appearance: none;
+  font-weight: 600; width: 100%; min-width: 0; max-width: 100%;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  padding-right: 46px;
+  background-color: var(--cream);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23141414' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center; background-size: 20px 20px;
+}
 textarea.input { padding: 12px 14px; font-weight: 400; resize: vertical; min-height: 130px; }
 .input[aria-invalid="true"] { border-color: var(--error); background: #FFF5F4; }
 .field-error { margin: 0; color: var(--error); font-size: 17px; font-weight: 700; display: flex; gap: 6px; align-items: flex-start; }
