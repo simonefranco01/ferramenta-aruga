@@ -85,6 +85,31 @@ Il sito è sul dominio **ferramentaaruga.it** (`site` e `base` in `astro.config.
 7. Verifica con il nuovo dominio: URL canonici, `sitemap-index.xml` e `robots.txt`.
 8. **Invia la sitemap a Google Search Console** (`https://dominio/sitemap-index.xml`).
 
+## SEO
+
+Tutta la parte SEO è "sotto il cofano": non cambia testi né grafica.
+
+| Cosa | Dove |
+|---|---|
+| Title e descrizione di ogni pagina (quelli che si vedono su Google) | in cima a ogni file di `src/pages/` (`title=` e `description=`). Consigliato: title ≤ 60 caratteri, description 70–160 |
+| Dati strutturati (negozio, sito, servizi, briciole di pane, FAQ) | `src/lib/schema.ts`. Sono generati dai dati: negozio e servizi da `site.json` e `src/data/services.ts` |
+| CAP, coordinate, link delle schede (Google, Pagine Gialle…) | `site.json`, blocco `seo`. Vuoti = non vengono scritti |
+| Controllo automatico | `npm run build` poi `npm run seo:check` |
+
+`npm run seo:check` controlla title e descrizioni (lunghezza, duplicati), un solo H1, canonical, `noindex` coerente con `staging`, Open Graph, immagini con `alt`, JSON-LD valido, link interni, `robots.txt` e sitemap. Esce con errore se qualcosa non va.
+
+### Aggiungere una pagina servizio
+1. Aggiungi il servizio in `src/data/services.ts` (compare in home, footer, 404, form e nei dati strutturati del negozio).
+2. Crea `src/pages/nome-pagina.astro` usando `ServicePage` (come `serrature.astro`): title, description, tag e contenuti.
+3. `npm run build && npm run seo:check`. Sitemap, briciole di pane e schema `Service` si aggiornano da soli.
+
+### Quando si apre il sito a Google
+Oggi `"staging": true` mette `noindex` su ogni pagina e blocca `robots.txt`. Per aprire:
+1. `"staging": false` in `site.json`, push.
+2. Controlla `https://ferramentaaruga.it/robots.txt`: deve dire `Allow: /` e indicare la sitemap.
+3. Search Console (proprietà di dominio, verifica TXT sul DNS), invio di `sitemap-index.xml`, richiesta di indicizzazione delle pagine principali. Bing Webmaster Tools: importare da Search Console.
+4. Nella scheda Google metti il sito `https://ferramentaaruga.it/`.
+
 ## Tracciamento
 
 I pulsanti hanno un attributo `data-track` (`preventivo`, `chiama`, `whatsapp`, `form_invio`). `src/scripts/track.ts` emette un evento `aruga:track`: nessuno strumento di analytics è attivo. Se in futuro se ne aggiunge uno che usa cookie di profilazione, servirà anche il banner cookie.

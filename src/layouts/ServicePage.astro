@@ -7,7 +7,7 @@ import Steps from '../components/Steps.astro';
 import Review from '../components/Review.astro';
 import Faq, { type FaqItem } from '../components/Faq.astro';
 import QuoteForm from '../components/QuoteForm.astro';
-import { faqJsonLd } from '../lib/schema';
+import { faqJsonLd, serviceJsonLd } from '../lib/schema';
 import { url } from '../lib/url';
 
 export type WhyBox =
@@ -29,6 +29,8 @@ interface Props {
   photoPosition?: string;
   /** Dicitura "Immagine illustrativa" sulla foto. */
   illustrative?: boolean;
+  /** Zone servite, per i dati strutturati (solo se confermate). */
+  serviceArea?: string[];
   /** Tondo di dettaglio in basso a destra. */
   inset?: ImageMetadata;
   insetAlt?: string;
@@ -43,7 +45,16 @@ interface Props {
 const p = Astro.props;
 const heroCta = p.heroCta ?? { href: '#preventivo', label: 'Chiedi il preventivo gratuito', track: 'preventivo' };
 ---
-<Base title={p.title} description={p.description} ctaHref="#preventivo" jsonLd={p.faqs ? [faqJsonLd(p.faqs)] : []}>
+<Base
+  title={p.title}
+  description={p.description}
+  ctaHref="#preventivo"
+  breadcrumb={p.tag}
+  jsonLd={[
+    serviceJsonLd(Astro.site, { name: p.tag, path: Astro.url.pathname, areaServed: p.serviceArea }),
+    ...(p.faqs ? [faqJsonLd(p.faqs)] : []),
+  ]}
+>
   <section class="section bg-yellow">
     <div class="hero-service">
       <a href={url('/#servizi')} class="back-link"><Icon name="arrow-left" size={18} />Tutti i servizi</a>

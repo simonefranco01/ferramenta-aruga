@@ -41,6 +41,13 @@
 
   "rating": { "value": 4.8, "count": 208 },
 
+  "seo": {
+    "postalCode": "",
+    "latitude": "",
+    "longitude": "",
+    "sameAs": []
+  },
+
   "social": {
     "facebook": "",
     "instagram": ""

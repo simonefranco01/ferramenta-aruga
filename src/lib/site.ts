@@ -41,4 +41,18 @@ export const socialLinks = [
   { label: 'Instagram', href: data.social.instagram },
 ].filter((s) => /^https:\/\//.test(s.href));
 
+/**
+ * Dati facoltativi per i dati strutturati (Google). Vuoti = non vengono scritti.
+ * - postalCode: 5 cifre (es. dal profilo Google)
+ * - latitude / longitude: coordinate dalla scheda Google Maps
+ * - sameAs: link https delle schede del negozio (Google, Pagine Gialle, Facebook…)
+ */
+const rawSeo = (data as { seo?: { postalCode?: string; latitude?: string; longitude?: string; sameAs?: string[] } }).seo ?? {};
+const lat = Number(rawSeo.latitude), lng = Number(rawSeo.longitude);
+export const seo = {
+  postalCode: /^\d{5}$/.test(String(rawSeo.postalCode ?? '')) ? String(rawSeo.postalCode) : null,
+  geo: rawSeo.latitude && rawSeo.longitude && Number.isFinite(lat) && Number.isFinite(lng) ? { latitude: lat, longitude: lng } : null,
+  sameAs: (rawSeo.sameAs ?? []).filter((u) => /^https:\/\//.test(u)),
+};
+
 export const ratingDisplay = data.rating.value.toFixed(1).replace('.', ',');

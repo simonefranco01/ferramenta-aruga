@@ -7,11 +7,14 @@ import negozio from '../assets/professionisti-negozio.webp';
 import colori from '../assets/professionisti-colori.webp';
 import upower from '../assets/upower.webp';
 import { url } from '../lib/url';
+import { serviceJsonLd } from '../lib/schema';
 ---
 <Base
-  title="Vernici San Marco, ferramenta e antinfortunistica per professionisti a Torino | Ferramenta Aruga"
-  description="Per decoratori, manutentori, imprese e strutture a Torino: vernici San Marco da rivenditore ufficiale, ferramenta, materiale per la manutenzione e antinfortunistica U-Power. Aperti anche il sabato."
+  title="Rivenditore San Marco e antinfortunistica a Torino | Aruga"
+  description="Per decoratori, manutentori, imprese e strutture a Torino: vernici San Marco da rivenditore ufficiale, ferramenta e antinfortunistica U-Power. Aperti il sabato."
   ctaHref="#preventivo"
+  breadcrumb="Per professionisti, imprese e strutture"
+  jsonLd={[serviceJsonLd(Astro.site, { name: 'Per professionisti, imprese e strutture', path: Astro.url.pathname })]}
 >
   <section class="section bg-yellow">
     <div class="hero-service">

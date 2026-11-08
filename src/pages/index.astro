@@ -12,14 +12,16 @@ import storia2 from '../assets/storia-2.webp';
 import { services } from '../data/services';
 import { site, founder, ratingDisplay } from '../lib/site';
 import { url } from '../lib/url';
+import { websiteJsonLd } from '../lib/schema';
 
 const years = 2026 - site.foundingYear;
 const Founder = founder.charAt(0).toUpperCase() + founder.slice(1);
 ---
 <Base
-  title="Ferramenta e colorificio a Torino Santa Rita dal 1986 | Ferramenta Aruga"
-  description="Ferramenta e colorificio San Marco in Via Barletta 55/B, Torino Santa Rita. Serrature, colori e vernici personalizzati, zanzariere e sistemi per tende, materiale idraulico ed elettrico, prodotti antinfortunistici, articoli per la casa. Preventivo gratuito."
+  title="Ferramenta e colorificio a Torino Santa Rita | Aruga"
+  description="Ferramenta e colorificio San Marco in Via Barletta 55/B, Torino Santa Rita. Serrature, chiavi, colori al tintometro, zanzariere. Aperti anche il sabato."
   ctaHref="#servizi"
+  jsonLd={[websiteJsonLd(Astro.site)]}
 >
   <section class="section bg-yellow">
     <div class="hero-home">

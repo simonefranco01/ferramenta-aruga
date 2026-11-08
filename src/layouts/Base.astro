@@ -5,7 +5,8 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import MobileBar from '../components/MobileBar.astro';
 import CookieBanner from '../components/CookieBanner.astro';
-import { site, email } from '../lib/site';
+import { site } from '../lib/site';
+import { storeJsonLd, breadcrumbJsonLd } from '../lib/schema';
 import { url, absoluteUrl } from '../lib/url';
 
 interface Props {
@@ -16,48 +17,19 @@ interface Props {
   noindex?: boolean;
   /** Dati strutturati aggiuntivi (es. FAQPage). */
   jsonLd?: Record<string, unknown>[];
+  /** Nome della pagina per le briciole di pane (Home > nome). Non va sulla home. */
+  breadcrumb?: string;
 }
 
-const { title, description, ctaHref = url('/contatti/'), noindex = false, jsonLd = [] } = Astro.props;
+const { title, description, ctaHref = url('/contatti/'), noindex = false, jsonLd = [], breadcrumb } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogImage = absoluteUrl('/og-image.jpg', Astro.site);
 const robots = site.staging || noindex ? 'noindex, nofollow' : 'index, follow';
-const homeUrl = absoluteUrl('/', Astro.site);
 
-const business = {
-  '@context': 'https://schema.org',
-  '@type': 'HardwareStore',
-  '@id': `${homeUrl}#negozio`,
-  name: site.name,
-  alternateName: site.googleName,
-  legalName: site.legalName,
-  vatID: site.vatId,
-  description: site.tagline,
-  foundingDate: String(site.foundingYear),
-  url: homeUrl,
-  logo: absoluteUrl('/logo.png', Astro.site),
-  image: ogImage,
-  telephone: site.phone.tel,
-  ...(email ? { email } : {}),
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: site.address.street,
-    addressLocality: site.address.city,
-    addressRegion: site.address.region,
-    addressCountry: site.address.country,
-  },
-  areaServed: `${site.address.city}`,
-  hasMap: site.mapsUrl,
-  openingHoursSpecification: site.hours.spec.map((s) => ({
-    '@type': 'OpeningHoursSpecification',
-    dayOfWeek: s.days.map((d) => `https://schema.org/${d}`),
-    opens: s.opens,
-    closes: s.closes,
-  })),
-  ...(Object.values(site.social).some(Boolean) ? { sameAs: Object.values(site.social).filter(Boolean) } : {}),
-};
-const schemas = [business, ...jsonLd];
+const business = storeJsonLd(Astro.site, ogImage);
+const crumbs = breadcrumb ? [breadcrumbJsonLd(Astro.site, breadcrumb, Astro.url.pathname)] : [];
+const schemas = [business, ...crumbs, ...jsonLd];
 ---
 <!doctype html>
 <html lang="it">
