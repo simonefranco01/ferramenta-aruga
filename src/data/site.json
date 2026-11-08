@@ -1,5 +1,5 @@
 {
-  "staging": true,
+  "staging": false,
   "url": "https://ferramentaaruga.it",
 
   "name": "Ferramenta Aruga",
